@@ -21,54 +21,54 @@ _Per-task cells live in [`results/*.csv`](results/); tables below aggregate by s
 
 | column | agent | environment | pass | earned | avg min/task (sanity3 / all24) |
 |---|---|---|---:|---:|---:|
-| qwen38_27b_bf16_pi_promptv1 | pi | rtx6000-96gb | 17/24 | $48,000 | 15.0 / 43.8 |
-| kimik3_reap576_iq2xxs | Kimi Code CLI | macstudio-512gb | 13/24 | $19,000 | - / - |
-| gemma4_31b_nvfp4_pi_promptv1 | pi | rtx6000-96gb | 7/24 | $9,250 | 4.3 / 6.2 |
-| k27_q2_2bit | custom tool-aware solver (pre-CLI) | macstudio-512gb | 3/24 | $2,000 | - / - |
+| [Qwen3.8-27B BF16](https://huggingface.co/unsloth/Qwen3.8-27B-GGUF) | pi | rtx6000-96gb | 17/24 | $48,000 | 15.0 / 43.8 |
+| [K3 REAP576 IQ2_XXS](https://huggingface.co/hellohazime/Kimi-K3-REAP-512GB-GGUF) | Kimi Code CLI | macstudio-512gb | 13/24 | $19,000 | - / - |
+| [Gemma-4-31B NVFP4](https://huggingface.co/CISCai/gemma-4-31B-it-NVFP4-turbo-GGUF) | pi | rtx6000-96gb | 7/24 | $9,250 | 4.3 / 6.2 |
+| [K2.7-Code Q2 (baseline)](https://huggingface.co/unsloth/Kimi-K2.7-Code-GGUF) | custom tool-aware solver (pre-CLI) | macstudio-512gb | 3/24 | $2,000 | - / - |
 
 #### sanity3 (3 tasks) — arms that finished the set
 
 | column | environment | pass | earned |
 |---|---|---:|---:|
-| k27_q2_2bit | macstudio-512gb | 3/3 | $2,000 |
-| kimik3_reap640_iq1s | macstudio-512gb | 3/3 | $2,000 |
-| kimik3_reap576_iq2xxs | macstudio-512gb | 3/3 | $2,000 |
-| kimik3_streamed896_iq2xxs_18000s | macstudio-512gb | 3/3 | $2,000 |
-| qwen38_reap256_iq1s_10800s | macstudio-512gb | 3/3 | $2,000 |
-| qwen38_27b_bf16_pi_promptv1 | rtx6000-96gb | 3/3 | $2,000 |
-| qwen38_a95b_udiq1s_10800s | macstudio-512gb | 2/3 | $1,500 |
-| gemma4_31b_nvfp4_pi_promptv1 | rtx6000-96gb | 2/3 | $1,000 |
+| [K2.7-Code Q2 (baseline)](https://huggingface.co/unsloth/Kimi-K2.7-Code-GGUF) | macstudio-512gb | 3/3 | $2,000 |
+| [K3 REAP640 IQ1_S](https://huggingface.co/hellohazime/Kimi-K3-REAP-512GB-GGUF) | macstudio-512gb | 3/3 | $2,000 |
+| [K3 REAP576 IQ2_XXS](https://huggingface.co/hellohazime/Kimi-K3-REAP-512GB-GGUF) | macstudio-512gb | 3/3 | $2,000 |
+| [K3 full-896 streamed (cap 18000s)](https://huggingface.co/unsloth/Kimi-K3-GGUF) | macstudio-512gb | 3/3 | $2,000 |
+| [Qwen3.8 REAP-256GB](https://huggingface.co/hellohazime/Qwen3.8-2.4T-A95B-REAP-256GB-GGUF) | macstudio-512gb | 3/3 | $2,000 |
+| [Qwen3.8-27B BF16](https://huggingface.co/unsloth/Qwen3.8-27B-GGUF) | rtx6000-96gb | 3/3 | $2,000 |
+| [Qwen3.8-2.4T UD-IQ1_S streamed](https://huggingface.co/unsloth/Qwen3.8-2.4T-A95B-GGUF) | macstudio-512gb | 2/3 | $1,500 |
+| [Gemma-4-31B NVFP4](https://huggingface.co/CISCai/gemma-4-31B-it-NVFP4-turbo-GGUF) | rtx6000-96gb | 2/3 | $1,000 |
 
 #### hard5 (5 tasks) — arms that finished the set
 
 | column | environment | pass | earned |
 |---|---|---:|---:|
-| kimik3_reap576_iq2xxs | macstudio-512gb | 4/5 | $11,000 |
-| qwen38_27b_bf16_pi_promptv1 | rtx6000-96gb | 3/5 | $9,000 |
-| gemma4_31b_nvfp4_pi_promptv1 | rtx6000-96gb | 3/5 | $7,000 |
-| kimik3_reap640_iq1s | macstudio-512gb | 2/5 | $1,500 |
-| kimik3_streamed896_iq2xxs_18000s | macstudio-512gb | 2/5 | $1,500 |
-| k27_q2_2bit | macstudio-512gb | 0/5 | $0 |
-| qwen38_reap256_iq1s_10800s | macstudio-512gb | 0/5 | $0 |
+| [K3 REAP576 IQ2_XXS](https://huggingface.co/hellohazime/Kimi-K3-REAP-512GB-GGUF) | macstudio-512gb | 4/5 | $11,000 |
+| [Qwen3.8-27B BF16](https://huggingface.co/unsloth/Qwen3.8-27B-GGUF) | rtx6000-96gb | 3/5 | $9,000 |
+| [Gemma-4-31B NVFP4](https://huggingface.co/CISCai/gemma-4-31B-it-NVFP4-turbo-GGUF) | rtx6000-96gb | 3/5 | $7,000 |
+| [K3 REAP640 IQ1_S](https://huggingface.co/hellohazime/Kimi-K3-REAP-512GB-GGUF) | macstudio-512gb | 2/5 | $1,500 |
+| [K3 full-896 streamed (cap 18000s)](https://huggingface.co/unsloth/Kimi-K3-GGUF) | macstudio-512gb | 2/5 | $1,500 |
+| [K2.7-Code Q2 (baseline)](https://huggingface.co/unsloth/Kimi-K2.7-Code-GGUF) | macstudio-512gb | 0/5 | $0 |
+| [Qwen3.8 REAP-256GB](https://huggingface.co/hellohazime/Qwen3.8-2.4T-A95B-REAP-256GB-GGUF) | macstudio-512gb | 0/5 | $0 |
 
 #### extended16 (16 tasks) — arms that finished the set
 
 | column | environment | pass | earned |
 |---|---|---:|---:|
-| qwen38_27b_bf16_pi_promptv1 | rtx6000-96gb | 11/16 | $37,000 |
-| kimik3_reap576_iq2xxs | macstudio-512gb | 6/16 | $6,000 |
-| gemma4_31b_nvfp4_pi_promptv1 | rtx6000-96gb | 2/16 | $1,250 |
-| k27_q2_2bit | macstudio-512gb | 0/16 | $0 |
+| [Qwen3.8-27B BF16](https://huggingface.co/unsloth/Qwen3.8-27B-GGUF) | rtx6000-96gb | 11/16 | $37,000 |
+| [K3 REAP576 IQ2_XXS](https://huggingface.co/hellohazime/Kimi-K3-REAP-512GB-GGUF) | macstudio-512gb | 6/16 | $6,000 |
+| [Gemma-4-31B NVFP4](https://huggingface.co/CISCai/gemma-4-31B-it-NVFP4-turbo-GGUF) | rtx6000-96gb | 2/16 | $1,250 |
+| [K2.7-Code Q2 (baseline)](https://huggingface.co/unsloth/Kimi-K2.7-Code-GGUF) | macstudio-512gb | 0/16 | $0 |
 
 ### Incomplete runs — not ranked (cells: pass/decided of set size)
 
 | column | environment | sanity3 | hard5 | extended16 | earned so far |
 |---|---|---:|---:|---:|---:|
-| kimik3_reap640_iq1s | macstudio-512gb | 3/3 of 3 | 2/5 of 5 | 2/10 of 16 | $35,750 |
-| kimik3_streamed896_iq2xxs_18000s | macstudio-512gb | 3/3 of 3 | 2/5 of 5 | 2/3 of 16 | $35,750 |
-| qwen38_a95b_udiq1s_10800s | macstudio-512gb | 2/3 of 3 | 4/4 of 5 | — | $11,000 |
-| kimik3_streamed896_iq2xxs_18000s_attempt2 | macstudio-512gb | — | 3/3 of 5 | — | $10,000 |
-| qwen38_reap256_iq1s_10800s | macstudio-512gb | 3/3 of 3 | 0/5 of 5 | — | $2,000 |
+| [K3 REAP640 IQ1_S](https://huggingface.co/hellohazime/Kimi-K3-REAP-512GB-GGUF) | macstudio-512gb | 3/3 of 3 | 2/5 of 5 | 2/10 of 16 | $35,750 |
+| [K3 full-896 streamed (cap 18000s)](https://huggingface.co/unsloth/Kimi-K3-GGUF) | macstudio-512gb | 3/3 of 3 | 2/5 of 5 | 2/3 of 16 | $35,750 |
+| [Qwen3.8-2.4T UD-IQ1_S streamed](https://huggingface.co/unsloth/Qwen3.8-2.4T-A95B-GGUF) | macstudio-512gb | 2/3 of 3 | 4/4 of 5 | — | $11,000 |
+| [K3 full-896 streamed, attempt 2](https://huggingface.co/unsloth/Kimi-K3-GGUF) | macstudio-512gb | — | 3/3 of 5 | — | $10,000 |
+| [Qwen3.8 REAP-256GB](https://huggingface.co/hellohazime/Qwen3.8-2.4T-A95B-REAP-256GB-GGUF) | macstudio-512gb | 3/3 of 3 | 0/5 of 5 | — | $2,000 |
 
 ## macstudio-512gb
 

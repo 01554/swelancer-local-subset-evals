@@ -31,6 +31,14 @@ if os.path.exists("results/columns.csv"):
     for r in csv.DictReader(open("results/columns.csv")):
         meta[r["column"]] = r
 
+def disp(col):
+    """Linked short name for boards; raw ids stay in the CSVs and the
+    run-conditions table."""
+    m = meta.get(col, {})
+    if m.get("display") and m.get("url"):
+        return f"[{m['display']}]({m['url']})"
+    return col
+
 summary = []   # (env, col, passes, decided, money, timeouts)
 setstat = {}   # (env, col) -> {set: (passes, decided, money, set_size)}
 env_size = {}  # env -> total tasks in its CSV
@@ -89,7 +97,7 @@ if complete:
         mrow = meta.get(col, {})
         g = lambda k: mrow.get(k) or "-"
         lb_lines.append(
-            f"| {col} | {g('agent')} | {env} | {p}/{n} | ${m:,.0f} | {g('avg_min_sanity3')} / {g('avg_min_all24')} |"
+            f"| {disp(col)} | {g('agent')} | {env} | {p}/{n} | ${m:,.0f} | {g('avg_min_sanity3')} / {g('avg_min_all24')} |"
         )
     lb_lines.append("")
 
@@ -109,7 +117,7 @@ for s in SETS:
         "|---|---|---:|---:|",
     ]
     for env, col, p, n, m in sorted(board, key=lambda b: (-b[2], -b[4])):
-        lb_lines.append(f"| {col} | {env} | {p}/{n} | ${m:,.0f} |")
+        lb_lines.append(f"| {disp(col)} | {env} | {p}/{n} | ${m:,.0f} |")
     lb_lines.append("")
 
 partial = [s for s in summary if s[3] != env_size[s[0]]]
@@ -126,7 +134,7 @@ if partial:
         for s in SETS:
             sp, sn, sm, size = st[s]
             cells.append(f"{sp}/{sn} of {size}" if sn else "—")
-        lb_lines.append(f"| {col} | {env} | " + " | ".join(cells) + f" | ${m:,.0f} |")
+        lb_lines.append(f"| {disp(col)} | {env} | " + " | ".join(cells) + f" | ${m:,.0f} |")
     lb_lines.append("")
 
 out += lb_lines + env_tables

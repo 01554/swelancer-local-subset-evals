@@ -1,10 +1,10 @@
-column,agent,avg_min_sanity3,avg_min_all24,ctx,sampling,timeout_aware
-k27_q2_2bit,custom tool-aware solver (pre-CLI),,,131072,temp 1.0 / top-p 0.95,
-kimik3_reap640_iq1s,Kimi Code CLI,,,131072,temp 1.0 / top-p 0.95,
-kimik3_reap576_iq2xxs,Kimi Code CLI,,,131072,temp 1.0 / top-p 0.95,
-kimik3_streamed896_iq2xxs_18000s,Kimi Code CLI,185.0,,131072,temp 1.0 / top-p 0.95,
-kimik3_streamed896_iq2xxs_18000s_attempt2,Kimi Code CLI,,,131072,temp 1.0 / top-p 0.95,
-qwen38_a95b_udiq1s_10800s,Qwen Code CLI 0.21.10-0.21.11,130.3,,131072,temp 1.0 / top-p 0.95 / top-k 20,1
-qwen38_reap256_iq1s_10800s,Qwen Code CLI 0.21.11,88.0,,131072,temp 1.0 / top-p 0.95 / top-k 20,1
-gemma4_31b_nvfp4_pi_promptv1,pi,4.3,6.2,131072,temp 1.0 / top-p 0.95,1
-qwen38_27b_bf16_pi_promptv1,pi,15.0,43.8,131072,temp 1.0 / top-p 0.95,1
+column,agent,avg_min_sanity3,avg_min_all24,ctx,sampling,timeout_aware,display,url
+k27_q2_2bit,custom tool-aware solver (pre-CLI),,,131072,temp 1.0 / top-p 0.95,,K2.7-Code Q2 (baseline),https://huggingface.co/unsloth/Kimi-K2.7-Code-GGUF
+kimik3_reap640_iq1s,Kimi Code CLI,,,131072,temp 1.0 / top-p 0.95,,K3 REAP640 IQ1_S,https://huggingface.co/hellohazime/Kimi-K3-REAP-512GB-GGUF
+kimik3_reap576_iq2xxs,Kimi Code CLI,,,131072,temp 1.0 / top-p 0.95,,K3 REAP576 IQ2_XXS,https://huggingface.co/hellohazime/Kimi-K3-REAP-512GB-GGUF
+kimik3_streamed896_iq2xxs_18000s,Kimi Code CLI,185.0,,131072,temp 1.0 / top-p 0.95,,K3 full-896 streamed (cap 18000s),https://huggingface.co/unsloth/Kimi-K3-GGUF
+kimik3_streamed896_iq2xxs_18000s_attempt2,Kimi Code CLI,,,131072,temp 1.0 / top-p 0.95,,"K3 full-896 streamed, attempt 2",https://huggingface.co/unsloth/Kimi-K3-GGUF
+qwen38_a95b_udiq1s_10800s,Qwen Code CLI 0.21.10-0.21.11,130.3,,131072,temp 1.0 / top-p 0.95 / top-k 20,1,Qwen3.8-2.4T UD-IQ1_S streamed,https://huggingface.co/unsloth/Qwen3.8-2.4T-A95B-GGUF
+qwen38_reap256_iq1s_10800s,Qwen Code CLI 0.21.11,88.0,,131072,temp 1.0 / top-p 0.95 / top-k 20,1,Qwen3.8 REAP-256GB,https://huggingface.co/hellohazime/Qwen3.8-2.4T-A95B-REAP-256GB-GGUF
+gemma4_31b_nvfp4_pi_promptv1,pi,4.3,6.2,131072,temp 1.0 / top-p 0.95,1,Gemma-4-31B NVFP4,https://huggingface.co/CISCai/gemma-4-31B-it-NVFP4-turbo-GGUF
+qwen38_27b_bf16_pi_promptv1,pi,15.0,43.8,131072,temp 1.0 / top-p 0.95,1,Qwen3.8-27B BF16,https://huggingface.co/unsloth/Qwen3.8-27B-GGUF
