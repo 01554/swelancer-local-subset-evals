@@ -44,12 +44,16 @@ flags per build, the exact rollout caps we used (10800 s resident /
 18000 s streamed), one attempt per task, per-task CSVs under
 `replication_results/`.
 
-**The caps are ours, not the benchmark's.** Neither the SWE-Lancer paper
-nor the official harness imposes a per-task wall-clock limit (upstream only
-caps a single code execution at 300 s). 10800 s is a line we drew so a
-~3 tok/s local machine finishes a run in days, not months — roughly 2× the
-1.6 h/task average of our original K2.7 full run. Treat it as a condition
-of the experiment, which is why it is part of every column label.
+**The caps are ours, not the benchmark's.** The official harness assumes
+API-speed models: its only time limit is 300 s per code execution, and it
+has no per-task wall clock at all. On a Mac Studio serving ~3 tok/s, that
+shape of limit is unusable — a single agent turn can take longer than
+300 s to *generate*, and our K2.7 run showed that cutting individual
+responses poisons results (a 900 s response cutoff fired on 109 of 198
+tasks; 75 of them scored zero). So we replaced per-step cutoffs with one
+whole-task wall clock: 10800 s, roughly 2× the K2.7 full-run average of
+1.6 h/task. Treat it as a condition of the experiment, which is why it is
+part of every column label.
 
 Task sets: `sanity3` (3), `hard5` (5), `trio` (the 3 tasks at the center
 of the streamed-arm mystery), `extended16` (16), `all24` — **or any explicit
