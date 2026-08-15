@@ -18,10 +18,10 @@ _Auto-generated from [`results/*.csv`](results/) by `scripts/render_results.py` 
 | column | environment | pass | earned |
 |---|---|---:|---:|
 | qwen38_27b_bf16_pi_promptv1 | rtx6000-96gb | 17/24 | $48,000 |
-| streamed896_iq2xxs_18000s | macstudio-512gb | 7/11 | $35,750 |
-| reap640_iq1s | macstudio-512gb | 6/10 | $35,500 |
-| reap576_iq2xxs | macstudio-512gb | 13/24 | $19,000 |
-| streamed896_iq2xxs_18000s_attempt2 | macstudio-512gb | 3/3 | $10,000 |
+| kimik3_streamed896_iq2xxs_18000s | macstudio-512gb | 7/11 | $35,750 |
+| kimik3_reap640_iq1s | macstudio-512gb | 6/10 | $35,500 |
+| kimik3_reap576_iq2xxs | macstudio-512gb | 13/24 | $19,000 |
+| kimik3_streamed896_iq2xxs_18000s_attempt2 | macstudio-512gb | 3/3 | $10,000 |
 | gemma4_31b_nvfp4_pi_promptv1 | rtx6000-96gb | 7/24 | $9,250 |
 | qwen38_a95b_udiq1s_10800s | macstudio-512gb | 5/6 | $7,000 |
 | k27_q2_2bit | macstudio-512gb | 3/24 | $2,000 |
@@ -29,7 +29,7 @@ _Auto-generated from [`results/*.csv`](results/) by `scripts/render_results.py` 
 
 ## macstudio-512gb
 
-| task | set | $ | k27_q2_2bit | reap640_iq1s | reap576_iq2xxs | streamed896_iq2xxs_18000s | streamed896_iq2xxs_18000s_attempt2 | qwen38_a95b_udiq1s_10800s | qwen38_reap256_iq1s_10800s |
+| task | set | $ | k27_q2_2bit | kimik3_reap640_iq1s | kimik3_reap576_iq2xxs | kimik3_streamed896_iq2xxs_18000s | kimik3_streamed896_iq2xxs_18000s_attempt2 | qwen38_a95b_udiq1s_10800s | qwen38_reap256_iq1s_10800s |
 |---|---|---:|---|---|---|---|---|---|---|
 | 28096_836 | probe | 500 | ✅ | ✅ | ✅ | ✅ | · | ❌ | ✅ |
 | 18827_741 | probe | 1,000 | ✅ | ✅ | ✅ | ✅ | · | ✅ | ✅ |

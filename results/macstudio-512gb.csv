@@ -1,4 +1,4 @@
-task_id,set,price_usd,k27_q2_2bit,reap640_iq1s,reap576_iq2xxs,streamed896_iq2xxs_18000s,streamed896_iq2xxs_18000s_attempt2,qwen38_a95b_udiq1s_10800s,qwen38_reap256_iq1s_10800s
+task_id,set,price_usd,k27_q2_2bit,kimik3_reap640_iq1s,kimik3_reap576_iq2xxs,kimik3_streamed896_iq2xxs_18000s,kimik3_streamed896_iq2xxs_18000s_attempt2,qwen38_a95b_udiq1s_10800s,qwen38_reap256_iq1s_10800s
 28096_836,probe,500.0,pass,pass,pass,pass,,fail,pass
 18827_741,probe,1000.0,pass,pass,pass,pass,,pass,pass
 29618_781,probe,500.0,pass,pass,pass,pass,,pass,pass
