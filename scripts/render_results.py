@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
-"""Render results/*.csv into RESULTS.md (human-readable emoji tables).
+"""Render results/*.csv into the README.md results section.
 
+Replaces everything between the RESULTS:BEGIN / RESULTS:END markers.
 Cell vocabulary: pass / fail / timeout / running / not_run (or empty).
 Run from the repo root: python3 scripts/render_results.py
 """
@@ -9,11 +10,10 @@ import glob
 import os
 
 SYM = {"pass": "✅", "fail": "❌", "timeout": "⏱️", "running": "🔄", "not_run": "—", "": "·"}
+BEGIN, END = "<!-- RESULTS:BEGIN -->", "<!-- RESULTS:END -->"
 
 out = [
-    "# Results",
-    "",
-    "Auto-generated from [`results/*.csv`](results/) by `scripts/render_results.py` — edit those, not this file.",
+    "_Auto-generated from [`results/*.csv`](results/) by `scripts/render_results.py` — edit those, not this section._",
     "",
     "✅ pass ❌ fail ⏱️ timeout (rollout cap hit, unfinished) 🔄 running — not run",
     "",
@@ -47,14 +47,22 @@ for path in sorted(glob.glob("results/*.csv")):
     out.append("| **timeouts** | | | " + " | ".join(touts) + " |")
     out.append("")
 
-out.insert(6, "## Leaderboard")
-out.insert(7, "")
-out.insert(8, "| column | environment | pass | earned |")
-out.insert(9, "|---|---|---:|---:|")
+lb_lines = [
+    "### Leaderboard",
+    "",
+    "| column | environment | pass | earned |",
+    "|---|---|---:|---:|",
+]
 lb = sorted(summary, key=lambda s: (-s[4], -s[2]))
-for i, (env, col, p, n, m, t) in enumerate(lb):
-    out.insert(10 + i, f"| {col} | {env} | {p}/{n} | ${m:,.0f} |")
-out.insert(10 + len(lb), "")
+for env, col, p, n, m, t in lb:
+    lb_lines.append(f"| {col} | {env} | {p}/{n} | ${m:,.0f} |")
+lb_lines.append("")
+out[4:4] = lb_lines
 
-open("RESULTS.md", "w").write("\n".join(out) + "\n")
-print(f"RESULTS.md written ({len(summary)} columns)")
+section = "\n".join([BEGIN, "## Results", ""] + out + [END])
+readme = open("README.md").read()
+assert BEGIN in readme and END in readme, "markers not found in README.md"
+head, rest = readme.split(BEGIN, 1)
+_, tail = rest.split(END, 1)
+open("README.md", "w").write(head + section + tail)
+print(f"README.md results section updated ({len(summary)} columns)")
