@@ -106,7 +106,7 @@ _Per-task cells live in [`results/*.csv`](results/); tables below aggregate by s
 - Task selection rules and common conditions: [`SELECTION.md`](SELECTION.md)
 - How to re-run any cell on your hardware: [`REPLICATION.md`](REPLICATION.md)
 
-**Agent policy**: to judge real-world usability, rollouts use each model vendor's official CLI agent where one exists, `pi` where none does, and both when time permits.
+**Agent policy**: to judge real-world usability, rollouts use each model vendor's official CLI agent where one exists, `pi` where none does, and both when time permits. From 2026-08-16 all new arms also carry a prompt counter-note neutralizing the benchmark's phantom scaffold instructions (`promptv1` on rtx / `promptv1m` on macstudio; see SELECTION.md).
 
 Column naming: `<model>_<quant>_<agent/cli>_<condition labels>`; the rollout
 cap (10800 s unless suffixed) and any prompt deviation (e.g. `promptv1`) are

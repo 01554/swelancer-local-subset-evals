@@ -28,6 +28,17 @@ rtx6000 arms' live in [`results/columns.csv`](results/columns.csv) and
   paper's** — upstream's only limit (300 s per code execution) assumes
   API-speed models and is unusable at ~3 tok/s, so we bound the whole task
   instead; see REPLICATION.md.
+- **Prompt counter-note (standard from 2026-08-16).** The task prompt's
+  references to a scaffold that does not exist in CLI rollouts (```python
+  execution, `<user-tool>`) trap instruction-following models into one-turn
+  deaths. rtx arms have always neutralized the python-block phantom
+  (`promptv1`); macstudio CLI arms now do the same with their own wording
+  (`promptv1m`, version-controlled in the solver, enabled via
+  `QWEN_PROMPT_NOTE=v1m`). Columns recorded before this date ran WITHOUT the
+  note and stay as recorded — notably the unpruned qwen38 arm's single fail
+  (28096_836) and the reap512 no-note sanity3 (1 of 3) are exactly this trap
+  class, verified from run logs (verbatim-identical ```python one-turn
+  exits).
 - **Text-only.** All arms run without vision input — a standing condition
   of this eval (details and the visually-dependent task tally: TASKS.md).
 - **One attempt per task.** Genuine failures were never re-rolled. Two tasks
