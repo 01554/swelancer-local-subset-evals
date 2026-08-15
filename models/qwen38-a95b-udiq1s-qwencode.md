@@ -22,8 +22,8 @@
 ## Read (English)
 
 **The best macstudio arm per task, and a grinder like its 27B sibling.**
-hard5 4/4 so far (15925 still running), including two passes (18827_741, 29618_781)
-that ran 184–186 minutes, i.e. essentially the whole cap converted into a
+hard5 5/5 — the full sweep, including three passes (18827_741, 29618_781,
+and 15925 at 183 minutes) that ran essentially the whole cap, i.e. essentially the whole cap converted into a
 win. The "converts time into wins" profile the 27B showed on RTX appears
 here at 1/5th the speed.
 
