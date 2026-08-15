@@ -92,14 +92,14 @@ if complete:
     lb_lines += [
         "### Overall — arms that ran all 24 tasks",
         "",
-        "| column | agent | environment | pass | earned | avg min/task (sanity3 / all24) |",
+        "| column | agent | environment | pass | earned | avg min/task |",
         "|---|---|---|---:|---:|---:|",
     ]
     for env, col, p, n, m, t in sorted(complete, key=lambda s: (-s[4], -s[2])):
         mrow = meta.get(col, {})
         g = lambda k: mrow.get(k) or "-"
         lb_lines.append(
-            f"| {disp(col)} | {g('agent')} | {env} | {p}/{n} | ${m:,.0f} | {g('avg_min_sanity3')} / {g('avg_min_all24')} |"
+            f"| {disp(col)} | {g('agent')} | {env} | {p}/{n} | ${m:,.0f} | {g('avg_min_all24')} |"
         )
     lb_lines.append("")
 
@@ -112,14 +112,19 @@ for s in SETS:
     if not board:
         continue
     size = board[0][3]
+    avg_key = f"avg_min_{s}"
+    has_avg = any(meta.get(col, {}).get(avg_key) for _, col, *_ in board)
     lb_lines += [
         f"#### {s} ({size} tasks) — arms that finished the set",
         "",
-        "| column | environment | pass | earned |",
-        "|---|---|---:|---:|",
+        "| column | environment | pass | earned |" + (" avg min/task |" if has_avg else ""),
+        "|---|---|---:|---:|" + ("---:|" if has_avg else ""),
     ]
     for env, col, p, n, m in sorted(board, key=lambda b: (-b[2], -b[4])):
-        lb_lines.append(f"| {disp(col)} | {env} | {p}/{n} | ${m:,.0f} |")
+        row = f"| {disp(col)} | {env} | {p}/{n} | ${m:,.0f} |"
+        if has_avg:
+            row += f" {meta.get(col, {}).get(avg_key) or '-'} |"
+        lb_lines.append(row)
     lb_lines.append("")
 
 partial = [s for s in summary if s[3] != env_size[s[0]]]

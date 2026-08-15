@@ -19,25 +19,25 @@ _Per-task cells live in [`results/*.csv`](results/); tables below aggregate by s
 
 ### Overall — arms that ran all 24 tasks
 
-| column | agent | environment | pass | earned | avg min/task (sanity3 / all24) |
+| column | agent | environment | pass | earned | avg min/task |
 |---|---|---|---:|---:|---:|
-| [Qwen3.8-27B BF16](models/qwen38-27b-bf16-pi.md) | pi | rtx6000-96gb | 17/24 | $48,000 | 15.0 / 43.8 |
-| [K3 REAP576 IQ2_XXS](models/kimik3-reap576-iq2xxs-kimicode.md) | Kimi Code CLI | macstudio-512gb | 13/24 | $19,000 | - / - |
-| [Gemma-4-31B NVFP4](models/gemma4-31b-nvfp4-pi.md) | pi | rtx6000-96gb | 7/24 | $9,250 | 4.3 / 6.2 |
-| [K2.7-Code Q2 (baseline)](models/k27-q2-toolaware.md) | custom tool-aware solver (pre-CLI) | macstudio-512gb | 3/24 | $2,000 | - / - |
+| [Qwen3.8-27B BF16](models/qwen38-27b-bf16-pi.md) | pi | rtx6000-96gb | 17/24 | $48,000 | 43.8 |
+| [K3 REAP576 IQ2_XXS](models/kimik3-reap576-iq2xxs-kimicode.md) | Kimi Code CLI | macstudio-512gb | 13/24 | $19,000 | - |
+| [Gemma-4-31B NVFP4](models/gemma4-31b-nvfp4-pi.md) | pi | rtx6000-96gb | 7/24 | $9,250 | 6.2 |
+| [K2.7-Code Q2 (baseline)](models/k27-q2-toolaware.md) | custom tool-aware solver (pre-CLI) | macstudio-512gb | 3/24 | $2,000 | - |
 
 #### sanity3 (3 tasks) — arms that finished the set
 
-| column | environment | pass | earned |
-|---|---|---:|---:|
-| [K2.7-Code Q2 (baseline)](models/k27-q2-toolaware.md) | macstudio-512gb | 3/3 | $2,000 |
-| [K3 REAP640 IQ1_S](models/kimik3-reap640-iq1s-kimicode.md) | macstudio-512gb | 3/3 | $2,000 |
-| [K3 REAP576 IQ2_XXS](models/kimik3-reap576-iq2xxs-kimicode.md) | macstudio-512gb | 3/3 | $2,000 |
-| [K3 full-896 streamed (cap 18000s)](models/kimik3-896-iq2xxs-streamed-kimicode.md) | macstudio-512gb | 3/3 | $2,000 |
-| [Qwen3.8 REAP-256GB](models/qwen38-reap256-iq1s-qwencode.md) | macstudio-512gb | 3/3 | $2,000 |
-| [Qwen3.8-27B BF16](models/qwen38-27b-bf16-pi.md) | rtx6000-96gb | 3/3 | $2,000 |
-| [Qwen3.8-2.4T UD-IQ1_S streamed](models/qwen38-a95b-udiq1s-qwencode.md) | macstudio-512gb | 2/3 | $1,500 |
-| [Gemma-4-31B NVFP4](models/gemma4-31b-nvfp4-pi.md) | rtx6000-96gb | 2/3 | $1,000 |
+| column | environment | pass | earned | avg min/task |
+|---|---|---:|---:|---:|
+| [K2.7-Code Q2 (baseline)](models/k27-q2-toolaware.md) | macstudio-512gb | 3/3 | $2,000 | - |
+| [K3 REAP640 IQ1_S](models/kimik3-reap640-iq1s-kimicode.md) | macstudio-512gb | 3/3 | $2,000 | - |
+| [K3 REAP576 IQ2_XXS](models/kimik3-reap576-iq2xxs-kimicode.md) | macstudio-512gb | 3/3 | $2,000 | - |
+| [K3 full-896 streamed (cap 18000s)](models/kimik3-896-iq2xxs-streamed-kimicode.md) | macstudio-512gb | 3/3 | $2,000 | 185.0 |
+| [Qwen3.8 REAP-256GB](models/qwen38-reap256-iq1s-qwencode.md) | macstudio-512gb | 3/3 | $2,000 | 88.0 |
+| [Qwen3.8-27B BF16](models/qwen38-27b-bf16-pi.md) | rtx6000-96gb | 3/3 | $2,000 | 15.0 |
+| [Qwen3.8-2.4T UD-IQ1_S streamed](models/qwen38-a95b-udiq1s-qwencode.md) | macstudio-512gb | 2/3 | $1,500 | 130.3 |
+| [Gemma-4-31B NVFP4](models/gemma4-31b-nvfp4-pi.md) | rtx6000-96gb | 2/3 | $1,000 | 4.3 |
 
 #### hard5 (5 tasks) — arms that finished the set
 
