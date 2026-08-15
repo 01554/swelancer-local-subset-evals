@@ -5,7 +5,7 @@
 | checkpoint | [Kimi-K3-REAP-512GB-GGUF](https://huggingface.co/hellohazime/Kimi-K3-REAP-512GB-GGUF) REAP576-IQ2_XXS (478.5 GB / 446 GiB) — 576 of 896 experts kept per layer, en+code saliency; quant mix IQ1_M/IQ2_XXS/IQ3_XXS ≈ 1.91 bpw |
 | engine | llama.cpp k3-stream (Metal), resident; prefill 48.3 / decode 2.98 tok/s |
 | score | 13/24, $19,000 (sanity3 3/3 · hard5 4/5 · extended16 6/16) |
-| timeouts | ≥8 — all 8 of its audited extended16 fails hit the 10800 s cap |
+| timeouts | 9 — **every fail this arm produced was cap-terminated** (8 in extended16, plus its one hard5 miss at 187 min) |
 
 ## Read (English)
 
@@ -21,9 +21,10 @@ BF16-27B's 11/16 at 26 tok/s, never capped). One pass — 4324 — landed at
 ~186 min, right on the wall. The 21600 s re-run study exists for exactly
 this column.
 
-**Blind spot**: its one hard5 miss, 27353_776 (theme-color inference),
-fell to REAP640, the unpruned Qwen and nobody else pruned — cap status of
-that fail is unaudited.
+**No un-audited fails left**: its one hard5 miss, 27353_776 (theme-color
+inference), turned out to be another cap kill (187 min) — meaning this arm
+never once finished a task and got it wrong. Every loss was the clock. The
+21600 s re-run study now covers this cell too.
 
 ## 寸評(日本語)
 
@@ -36,5 +37,6 @@ that fail is unaudited.
 で一度も cap に触れなかった 27B の 11/16 と対照的)。4324 は約186分、壁
 ぎわの合格。21600秒の再走計画はこの列のためにある。
 
-**穴**: hard5 唯一の取りこぼし 27353_776(テーマ色推論)。この fail
-の cap 該当性だけは未監査。
+**未監査の負けは消滅**: hard5 唯一の取りこぼし 27353_776(テーマ色推論)も
+実は cap 切れ(187分)だった。つまりこのアームは**「解き終えて間違えた」ことが
+一度もない** — 負けは全部時計。21600秒再走スタディの対象がこのセルにも広がった。

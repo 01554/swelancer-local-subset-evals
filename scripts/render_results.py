@@ -112,10 +112,15 @@ for s in SETS:
     if not board:
         continue
     size = board[0][3]
+    DESC = {
+        "sanity3": "3 tasks the K2.7 baseline solved (smallest inputs) — does-it-still-work gate",
+        "hard5": "the 5 smallest tasks the K2.7 baseline failed",
+        "extended16": "16 more K2.7-failed tasks (shortest problem statements)",
+    }
     avg_key = f"avg_min_{s}"
     has_avg = any(meta.get(col, {}).get(avg_key) for _, col, *_ in board)
     lb_lines += [
-        f"#### {s} ({size} tasks) — arms that finished the set",
+        f"#### {s} ({size} tasks) — {DESC.get(s, '')}",
         "",
         "| column | environment | pass | earned |" + (" avg min/task |" if has_avg else ""),
         "|---|---|---:|---:|" + ("---:|" if has_avg else ""),
