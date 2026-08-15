@@ -22,6 +22,17 @@ date,model,quant,size_gb,engine,ctx,prefill_tps,decode_tps,notes
 
 All macstudio-512gb figures are quoted from the source repo's [SELECTION.md](SELECTION.md)/[REPLICATION.md](REPLICATION.md); nothing in that row was measured by the rtx6000 side.
 
+## Measured speeds (macstudio-512gb)
+
+First-hand measurements from the mac side (complements the quoted-figures note above):
+
+```csv
+date,model,quant,size_gb,engine,ctx,prefill_tps,decode_tps,notes
+2026-08-08,Kimi-K3-REAP576,UD-IQ2_XXS,478.5,llama.cpp k3-stream (Metal),131072,48.3,2.98,"resident"
+2026-08-13,Qwen3.8-2.4T-A95B,UD-IQ1_S,508,llama.cpp k3-stream (Metal),131072,,5.3-6.3,"--moe-stream cache 400 GiB; decode range over agentic workload"
+2026-08-15,Qwen3.8-REAP-256GB,IQ1_S,246,llama.cpp (Metal),4096,23.2-23.3,9.6-10.0,"resident; llama-cli single-shot smoke (48-token gen), fork and stock mainline"
+```
+
 ## Per-run conditions
 
 Same rows as the README leaderboard; fill your own rows in results/columns.csv.
