@@ -22,6 +22,8 @@ out = [
 summary = []
 for path in sorted(glob.glob("results/*.csv")):
     env = os.path.basename(path)[:-4]
+    if env == "columns":  # metadata, not an environment
+        continue
     rows = list(csv.reader(open(path)))
     header, data = rows[0], rows[1:]
     cols = header[3:]
@@ -47,15 +49,23 @@ for path in sorted(glob.glob("results/*.csv")):
     out.append("| **timeouts** | | | " + " | ".join(touts) + " |")
     out.append("")
 
+meta = {}
+if os.path.exists("results/columns.csv"):
+    for r in csv.DictReader(open("results/columns.csv")):
+        meta[r["column"]] = r
+
 lb_lines = [
     "### Leaderboard",
     "",
-    "| column | environment | pass | earned |",
-    "|---|---|---:|---:|",
+    "| column | agent | environment | pass | earned | avg min/task |",
+    "|---|---|---|---:|---:|---:|",
 ]
 lb = sorted(summary, key=lambda s: (-s[4], -s[2]))
 for env, col, p, n, m, t in lb:
-    lb_lines.append(f"| {col} | {env} | {p}/{n} | ${m:,.0f} |")
+    mrow = meta.get(col, {})
+    agent = mrow.get("agent") or "?"
+    avg = mrow.get("avg_task_min") or "?"
+    lb_lines.append(f"| {col} | {agent} | {env} | {p}/{n} | ${m:,.0f} | {avg} |")
 lb_lines.append("")
 out[4:4] = lb_lines
 

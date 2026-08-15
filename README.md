@@ -15,17 +15,17 @@ _Auto-generated from [`results/*.csv`](results/) by `scripts/render_results.py` 
 
 ### Leaderboard
 
-| column | environment | pass | earned |
-|---|---|---:|---:|
-| qwen38_27b_bf16_pi_promptv1 | rtx6000-96gb | 17/24 | $48,000 |
-| kimik3_streamed896_iq2xxs_18000s | macstudio-512gb | 7/11 | $35,750 |
-| kimik3_reap640_iq1s | macstudio-512gb | 6/10 | $35,500 |
-| kimik3_reap576_iq2xxs | macstudio-512gb | 13/24 | $19,000 |
-| kimik3_streamed896_iq2xxs_18000s_attempt2 | macstudio-512gb | 3/3 | $10,000 |
-| gemma4_31b_nvfp4_pi_promptv1 | rtx6000-96gb | 7/24 | $9,250 |
-| qwen38_a95b_udiq1s_10800s | macstudio-512gb | 5/6 | $7,000 |
-| k27_q2_2bit | macstudio-512gb | 3/24 | $2,000 |
-| qwen38_reap256_iq1s_10800s | macstudio-512gb | 3/8 | $2,000 |
+| column | agent | environment | pass | earned | avg min/task |
+|---|---|---|---:|---:|---:|
+| qwen38_27b_bf16_pi_promptv1 | pi | rtx6000-96gb | 17/24 | $48,000 | 43.8 |
+| kimik3_streamed896_iq2xxs_18000s | Kimi Code CLI | macstudio-512gb | 7/11 | $35,750 | ? |
+| kimik3_reap640_iq1s | Kimi Code CLI | macstudio-512gb | 6/10 | $35,500 | ? |
+| kimik3_reap576_iq2xxs | Kimi Code CLI | macstudio-512gb | 13/24 | $19,000 | ? |
+| kimik3_streamed896_iq2xxs_18000s_attempt2 | Kimi Code CLI | macstudio-512gb | 3/3 | $10,000 | ? |
+| gemma4_31b_nvfp4_pi_promptv1 | pi | rtx6000-96gb | 7/24 | $9,250 | 6.2 |
+| qwen38_a95b_udiq1s_10800s | ? | macstudio-512gb | 5/6 | $7,000 | ? |
+| k27_q2_2bit | Kimi Code CLI | macstudio-512gb | 3/24 | $2,000 | ? |
+| qwen38_reap256_iq1s_10800s | ? | macstudio-512gb | 3/8 | $2,000 | ? |
 
 ## macstudio-512gb
 
@@ -97,6 +97,8 @@ _Auto-generated from [`results/*.csv`](results/) by `scripts/render_results.py` 
 - Environment / speed table (read before comparing across CSVs): [`environments.md`](environments.md)
 - Task selection rules and common conditions: [`SELECTION.md`](SELECTION.md)
 - How to re-run any cell on your hardware: [`REPLICATION.md`](REPLICATION.md)
+
+**Agent policy**: to judge real-world usability, rollouts use each model vendor's official CLI agent where one exists, `pi` where none does, and both when time permits.
 
 Column naming: `<model>_<quant>_<agent/cli>_<condition labels>`; the rollout
 cap (10800 s unless suffixed) and any prompt deviation (e.g. `promptv1`) are
