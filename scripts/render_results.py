@@ -15,7 +15,7 @@ BEGIN, END = "<!-- RESULTS:BEGIN -->", "<!-- RESULTS:END -->"
 out = [
     "_Auto-generated from [`results/*.csv`](results/) by `scripts/render_results.py` — edit those, not this section._",
     "",
-    "✅ pass ❌ fail ⏱️ timeout (rollout cap hit, unfinished) 🔄 running — not run",
+    "✅ pass ❌ fail ⏱️ timeout (rollout cap hit, unfinished) 🔄 running — not run · in metadata rows, - = not recorded / unrecoverable (未取得), ≥N = N timeouts verified, rest unaudited",
     "",
     "Task sets (details in [SELECTION.md](SELECTION.md)): **probe** = 3 sanity tasks every build should pass · "
     "**differential** = 5 tasks the K2.7 baseline failed · **battle16** = 16 hard tasks, also K2.7-failed, "
@@ -61,7 +61,7 @@ for path in sorted(glob.glob("results/*.csv")):
         # only claim a timeout count for columns whose run recorded the
         # fail/timeout distinction; otherwise it is unknown, not zero
         aware = meta.get(cols[i], {}).get("timeout_aware")
-        touts.append(str(t) if aware else "?")
+        touts.append(str(t) if aware else (f"\u2265{t}" if t else "-"))
         summary.append((env, cols[i], p, n, m, t))
     out.append("| **total pass** | " + " | ".join(passes) + " |")
     out.append("| **earned** | " + " | ".join(moneys) + " |")
@@ -77,7 +77,7 @@ lb_lines = [
 lb = sorted(summary, key=lambda s: (-s[4], -s[2]))
 for env, col, p, n, m, t in lb:
     mrow = meta.get(col, {})
-    g = lambda k: mrow.get(k) or "?"
+    g = lambda k: mrow.get(k) or "-"
     lb_lines.append(
         f"| {col} | {g('agent')} | {env} | {p}/{n} | ${m:,.0f} | {g('avg_min_probe3')} / {g('avg_min_all24')} |"
     )
@@ -91,7 +91,7 @@ env_lines = [
 ]
 for env, col, p, n, m, t in lb:
     mrow = meta.get(col, {})
-    g = lambda k: mrow.get(k) or "?"
+    g = lambda k: mrow.get(k) or "-"
     env_lines.append(
         f"| {col} | {g('agent')} | {env} | {g('ctx')} | {g('sampling')} | {g('avg_min_probe3')} | {g('avg_min_all24')} |"
     )
