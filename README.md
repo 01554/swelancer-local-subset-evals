@@ -46,10 +46,10 @@ _Per-task cells live in [`results/*.csv`](results/); tables below aggregate by s
 | column | environment | pass | earned | avg min/task |
 |---|---|---:|---:|---:|
 | [Qwen3.8-2.4T UD-IQ1_S streamed](models/qwen38-a95b-udiq1s-qwencode.md) | macstudio-512gb | 5/5 | $11,500 | 140.0 |
-| [Qwen3.8-27B BF16 (Qwen Code)](https://huggingface.co/unsloth/Qwen3.8-27B-GGUF) | rtx6000-96gb | 5/5 | $11,500 | - |
+| [Qwen3.8-27B BF16 (Qwen Code)](https://huggingface.co/unsloth/Qwen3.8-27B-GGUF) | rtx6000-96gb | 5/5 | $11,500 | 31.2 |
 | [K3 REAP576 IQ2_XXS](models/kimik3-reap576-iq2xxs-kimicode.md) | macstudio-512gb | 4/5 | $11,000 | 134.5 |
-| [Qwen3.8-27B BF16](models/qwen38-27b-bf16-pi.md) | rtx6000-96gb | 3/5 | $9,000 | - |
-| [Gemma-4-31B NVFP4](models/gemma4-31b-nvfp4-pi.md) | rtx6000-96gb | 3/5 | $7,000 | - |
+| [Qwen3.8-27B BF16](models/qwen38-27b-bf16-pi.md) | rtx6000-96gb | 3/5 | $9,000 | 48.0 |
+| [Gemma-4-31B NVFP4](models/gemma4-31b-nvfp4-pi.md) | rtx6000-96gb | 3/5 | $7,000 | 5.0 |
 | [K3 REAP640 IQ1_S](models/kimik3-reap640-iq1s-kimicode.md) | macstudio-512gb | 2/5 | $1,500 | 167.3 |
 | [K3 full-896 streamed (cap 18000s)](models/kimik3-896-iq2xxs-streamed-kimicode.md) | macstudio-512gb | 2/5 | $1,500 | - |
 | [K2.7-Code Q2 (baseline)](models/k27-q2-toolaware.md) | macstudio-512gb | 0/5 | $0 | 27.7 |
@@ -59,10 +59,10 @@ _Per-task cells live in [`results/*.csv`](results/); tables below aggregate by s
 
 | column | environment | pass | earned | avg min/task |
 |---|---|---:|---:|---:|
-| [Qwen3.8-27B BF16 (Qwen Code)](https://huggingface.co/unsloth/Qwen3.8-27B-GGUF) | rtx6000-96gb | 11/16 | $40,250 | - |
-| [Qwen3.8-27B BF16](models/qwen38-27b-bf16-pi.md) | rtx6000-96gb | 11/16 | $37,000 | - |
+| [Qwen3.8-27B BF16 (Qwen Code)](https://huggingface.co/unsloth/Qwen3.8-27B-GGUF) | rtx6000-96gb | 11/16 | $40,250 | 31.4 |
+| [Qwen3.8-27B BF16](models/qwen38-27b-bf16-pi.md) | rtx6000-96gb | 11/16 | $37,000 | 47.9 |
 | [K3 REAP576 IQ2_XXS](models/kimik3-reap576-iq2xxs-kimicode.md) | macstudio-512gb | 6/16 | $6,000 | 157.4 |
-| [Gemma-4-31B NVFP4](models/gemma4-31b-nvfp4-pi.md) | rtx6000-96gb | 2/16 | $1,250 | - |
+| [Gemma-4-31B NVFP4](models/gemma4-31b-nvfp4-pi.md) | rtx6000-96gb | 2/16 | $1,250 | 6.6 |
 | [K2.7-Code Q2 (baseline)](models/k27-q2-toolaware.md) | macstudio-512gb | 0/16 | $0 | 98.0 |
 
 ### Incomplete runs — not ranked (cells: pass/decided of set size)
