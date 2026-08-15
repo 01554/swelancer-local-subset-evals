@@ -13,23 +13,62 @@ _Auto-generated from [`results/*.csv`](results/) by `scripts/render_results.py` 
 
 ✅ pass ❌ fail ⏱️ timeout (rollout cap hit, unfinished) 🔄 running — not run · in metadata rows, - = not recorded / unrecoverable (未取得), ≥N = N timeouts verified, rest unaudited
 
-### Leaderboard
+Task sets (details in [SELECTION.md](SELECTION.md)): **probe** = the 3 smallest-input tasks the K2.7 baseline solved (does-it-still-work gate) · **differential** = the 5 smallest-input tasks K2.7 failed · **battle16** = 16 more K2.7-failed tasks, selected by shortest title+description
+
+_Per-task cells live in [`results/*.csv`](results/); tables below aggregate by set. Arms are only ranked against arms that ran the same work: incomplete runs are listed unranked with their coverage._
+
+### Overall — arms that ran all 24 tasks
 
 | column | agent | environment | pass | earned | avg min/task (probe3 / all24) |
 |---|---|---|---:|---:|---:|
 | qwen38_27b_bf16_pi_promptv1 | pi | rtx6000-96gb | 17/24 | $48,000 | 15.0 / 43.8 |
-| kimik3_reap640_iq1s | Kimi Code CLI | macstudio-512gb | 7/18 | $35,750 | - / - |
-| kimik3_streamed896_iq2xxs_18000s | Kimi Code CLI | macstudio-512gb | 7/11 | $35,750 | 185.0 / - |
 | kimik3_reap576_iq2xxs | Kimi Code CLI | macstudio-512gb | 13/24 | $19,000 | - / - |
-| qwen38_a95b_udiq1s_10800s | Qwen Code CLI 0.21.10-0.21.11 | macstudio-512gb | 6/7 | $11,000 | 130.3 / - |
-| kimik3_streamed896_iq2xxs_18000s_attempt2 | Kimi Code CLI | macstudio-512gb | 3/3 | $10,000 | - / - |
 | gemma4_31b_nvfp4_pi_promptv1 | pi | rtx6000-96gb | 7/24 | $9,250 | 4.3 / 6.2 |
-| k27_q2_2bit | Kimi Code CLI | macstudio-512gb | 3/24 | $2,000 | - / - |
-| qwen38_reap256_iq1s_10800s | Qwen Code CLI 0.21.11 | macstudio-512gb | 3/8 | $2,000 | 88.0 / - |
+| k27_q2_2bit | custom tool-aware solver (pre-CLI) | macstudio-512gb | 3/24 | $2,000 | - / - |
 
-Task sets (details in [SELECTION.md](SELECTION.md)): **probe** = the 3 smallest-input tasks the K2.7 baseline solved (does-it-still-work gate) · **differential** = the 5 smallest-input tasks K2.7 failed · **battle16** = 16 more K2.7-failed tasks, selected by shortest title+description
+#### probe (3 tasks) — arms that finished the set
 
-_Per-task cells live in [`results/*.csv`](results/); tables below aggregate by set._
+| column | environment | pass | earned |
+|---|---|---:|---:|
+| k27_q2_2bit | macstudio-512gb | 3/3 | $2,000 |
+| kimik3_reap640_iq1s | macstudio-512gb | 3/3 | $2,000 |
+| kimik3_reap576_iq2xxs | macstudio-512gb | 3/3 | $2,000 |
+| kimik3_streamed896_iq2xxs_18000s | macstudio-512gb | 3/3 | $2,000 |
+| qwen38_reap256_iq1s_10800s | macstudio-512gb | 3/3 | $2,000 |
+| qwen38_27b_bf16_pi_promptv1 | rtx6000-96gb | 3/3 | $2,000 |
+| qwen38_a95b_udiq1s_10800s | macstudio-512gb | 2/3 | $1,500 |
+| gemma4_31b_nvfp4_pi_promptv1 | rtx6000-96gb | 2/3 | $1,000 |
+
+#### differential (5 tasks) — arms that finished the set
+
+| column | environment | pass | earned |
+|---|---|---:|---:|
+| kimik3_reap576_iq2xxs | macstudio-512gb | 4/5 | $11,000 |
+| qwen38_27b_bf16_pi_promptv1 | rtx6000-96gb | 3/5 | $9,000 |
+| gemma4_31b_nvfp4_pi_promptv1 | rtx6000-96gb | 3/5 | $7,000 |
+| kimik3_reap640_iq1s | macstudio-512gb | 2/5 | $1,500 |
+| kimik3_streamed896_iq2xxs_18000s | macstudio-512gb | 2/5 | $1,500 |
+| k27_q2_2bit | macstudio-512gb | 0/5 | $0 |
+| qwen38_reap256_iq1s_10800s | macstudio-512gb | 0/5 | $0 |
+
+#### battle16 (16 tasks) — arms that finished the set
+
+| column | environment | pass | earned |
+|---|---|---:|---:|
+| qwen38_27b_bf16_pi_promptv1 | rtx6000-96gb | 11/16 | $37,000 |
+| kimik3_reap576_iq2xxs | macstudio-512gb | 6/16 | $6,000 |
+| gemma4_31b_nvfp4_pi_promptv1 | rtx6000-96gb | 2/16 | $1,250 |
+| k27_q2_2bit | macstudio-512gb | 0/16 | $0 |
+
+### Incomplete runs — not ranked (cells: pass/decided of set size)
+
+| column | environment | probe | differential | battle16 | earned so far |
+|---|---|---:|---:|---:|---:|
+| kimik3_reap640_iq1s | macstudio-512gb | 3/3 of 3 | 2/5 of 5 | 2/10 of 16 | $35,750 |
+| kimik3_streamed896_iq2xxs_18000s | macstudio-512gb | 3/3 of 3 | 2/5 of 5 | 2/3 of 16 | $35,750 |
+| qwen38_a95b_udiq1s_10800s | macstudio-512gb | 2/3 of 3 | 4/4 of 5 | — | $11,000 |
+| kimik3_streamed896_iq2xxs_18000s_attempt2 | macstudio-512gb | — | 3/3 of 5 | — | $10,000 |
+| qwen38_reap256_iq1s_10800s | macstudio-512gb | 3/3 of 3 | 0/5 of 5 | — | $2,000 |
 
 ## macstudio-512gb
 

@@ -11,6 +11,7 @@ import os
 
 SYM = {"pass": "✅", "fail": "❌", "timeout": "⏱️", "running": "🔄", "not_run": "—", "": "·"}
 BEGIN, END = "<!-- RESULTS:BEGIN -->", "<!-- RESULTS:END -->"
+SETS = ("probe", "differential", "battle16")
 
 out = [
     "_Auto-generated from [`results/*.csv`](results/) by `scripts/render_results.py` — edit those, not this section._",
@@ -21,7 +22,8 @@ out = [
     "**differential** = the 5 smallest-input tasks K2.7 failed · **battle16** = 16 more K2.7-failed tasks, "
     "selected by shortest title+description",
     "",
-    "_Per-task cells live in [`results/*.csv`](results/); tables below aggregate by set._",
+    "_Per-task cells live in [`results/*.csv`](results/); tables below aggregate by set. "
+    "Arms are only ranked against arms that ran the same work: incomplete runs are listed unranked with their coverage._",
     "",
 ]
 
@@ -30,7 +32,10 @@ if os.path.exists("results/columns.csv"):
     for r in csv.DictReader(open("results/columns.csv")):
         meta[r["column"]] = r
 
-summary = []
+summary = []   # (env, col, passes, decided, money, timeouts)
+setstat = {}   # (env, col) -> {set: (passes, decided, money, set_size)}
+env_size = {}  # env -> total tasks in its CSV
+env_tables = []
 for path in sorted(glob.glob("results/*.csv")):
     env = os.path.basename(path)[:-4]
     if env == "columns":  # metadata, not an environment
@@ -38,18 +43,21 @@ for path in sorted(glob.glob("results/*.csv")):
     rows = list(csv.reader(open(path)))
     header, data = rows[0], rows[1:]
     cols = header[3:]
-    out.append(f"## {env}")
-    out.append("")
-    out.append("| set | " + " | ".join(cols) + " |")
-    out.append("|---|" + "---|" * len(cols))
-    for s in ("probe", "differential", "battle16"):
+    env_size[env] = len(data)
+    env_tables.append(f"## {env}")
+    env_tables.append("")
+    env_tables.append("| set | " + " | ".join(cols) + " |")
+    env_tables.append("|---|" + "---|" * len(cols))
+    for s in SETS:
         cells = []
         srows = [r for r in data if r[1] == s]
         for i in range(len(cols)):
             p = sum(1 for r in srows if r[3 + i] == "pass")
             n = sum(1 for r in srows if r[3 + i] in ("pass", "fail", "timeout"))
+            m = sum(float(r[2]) for r in srows if r[3 + i] == "pass")
+            setstat.setdefault((env, cols[i]), {})[s] = (p, n, m, len(srows))
             cells.append(f"{p}/{n}" if n else "—")
-        out.append(f"| {s} ({len(srows)}) | " + " | ".join(cells) + " |")
+        env_tables.append(f"| {s} ({len(srows)}) | " + " | ".join(cells) + " |")
     passes, moneys, touts = [], [], []
     for i in range(len(cols)):
         p = sum(1 for r in data if r[3 + i] == "pass")
@@ -61,35 +69,75 @@ for path in sorted(glob.glob("results/*.csv")):
         # only claim a timeout count for columns whose run recorded the
         # fail/timeout distinction; otherwise it is unknown, not zero
         aware = meta.get(cols[i], {}).get("timeout_aware")
-        touts.append(str(t) if aware else (f"\u2265{t}" if t else "-"))
+        touts.append(str(t) if aware else (f"≥{t}" if t else "-"))
         summary.append((env, cols[i], p, n, m, t))
-    out.append("| **total pass** | " + " | ".join(passes) + " |")
-    out.append("| **earned** | " + " | ".join(moneys) + " |")
-    out.append("| **timeouts** | " + " | ".join(touts) + " |")
-    out.append("")
+    env_tables.append("| **total pass** | " + " | ".join(passes) + " |")
+    env_tables.append("| **earned** | " + " | ".join(moneys) + " |")
+    env_tables.append("| **timeouts** | " + " | ".join(touts) + " |")
+    env_tables.append("")
 
-lb_lines = [
-    "### Leaderboard",
-    "",
-    "| column | agent | environment | pass | earned | avg min/task (probe3 / all24) |",
-    "|---|---|---|---:|---:|---:|",
-]
-lb = sorted(summary, key=lambda s: (-s[4], -s[2]))
-for env, col, p, n, m, t in lb:
-    mrow = meta.get(col, {})
-    g = lambda k: mrow.get(k) or "-"
-    lb_lines.append(
-        f"| {col} | {g('agent')} | {env} | {p}/{n} | ${m:,.0f} | {g('avg_min_probe3')} / {g('avg_min_all24')} |"
-    )
-lb_lines.append("")
-out[4:4] = lb_lines
+# ---- boards ------------------------------------------------------------
+lb_lines = []
+complete = [s for s in summary if s[3] == env_size[s[0]]]
+if complete:
+    lb_lines += [
+        "### Overall — arms that ran all 24 tasks",
+        "",
+        "| column | agent | environment | pass | earned | avg min/task (probe3 / all24) |",
+        "|---|---|---|---:|---:|---:|",
+    ]
+    for env, col, p, n, m, t in sorted(complete, key=lambda s: (-s[4], -s[2])):
+        mrow = meta.get(col, {})
+        g = lambda k: mrow.get(k) or "-"
+        lb_lines.append(
+            f"| {col} | {g('agent')} | {env} | {p}/{n} | ${m:,.0f} | {g('avg_min_probe3')} / {g('avg_min_all24')} |"
+        )
+    lb_lines.append("")
+
+for s in SETS:
+    board = []
+    for (env, col), st in setstat.items():
+        p, n, m, size = st[s]
+        if size and n == size:
+            board.append((env, col, p, n, m))
+    if not board:
+        continue
+    size = board[0][3]
+    lb_lines += [
+        f"#### {s} ({size} tasks) — arms that finished the set",
+        "",
+        "| column | environment | pass | earned |",
+        "|---|---|---:|---:|",
+    ]
+    for env, col, p, n, m in sorted(board, key=lambda b: (-b[2], -b[4])):
+        lb_lines.append(f"| {col} | {env} | {p}/{n} | ${m:,.0f} |")
+    lb_lines.append("")
+
+partial = [s for s in summary if s[3] != env_size[s[0]]]
+if partial:
+    lb_lines += [
+        "### Incomplete runs — not ranked (cells: pass/decided of set size)",
+        "",
+        "| column | environment | probe | differential | battle16 | earned so far |",
+        "|---|---|---:|---:|---:|---:|",
+    ]
+    for env, col, p, n, m, t in sorted(partial, key=lambda s: (-s[4], -s[2])):
+        st = setstat[(env, col)]
+        cells = []
+        for s in SETS:
+            sp, sn, sm, size = st[s]
+            cells.append(f"{sp}/{sn} of {size}" if sn else "—")
+        lb_lines.append(f"| {col} | {env} | " + " | ".join(cells) + f" | ${m:,.0f} |")
+    lb_lines.append("")
+
+out += lb_lines + env_tables
 
 # per-run conditions table -> environments.md (same rows as the leaderboard)
 env_lines = [
     "| column | agent | environment | ctx | sampling | avg min/task probe3 | avg min/task all24 |",
     "|---|---|---|---|---|---:|---:|",
 ]
-for env, col, p, n, m, t in lb:
+for env, col, p, n, m, t in sorted(summary, key=lambda s: (-s[4], -s[2])):
     mrow = meta.get(col, {})
     g = lambda k: mrow.get(k) or "-"
     env_lines.append(

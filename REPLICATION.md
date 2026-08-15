@@ -1,8 +1,10 @@
 # Replicating the SWE-Lancer results
 
 Everything needed to re-run our numbers on your own hardware, one command per
-task set. Please do — especially the `full896-stream` arm, whose result we
-find hard to believe ourselves (see the model card's caveats).
+task set. Please do — especially the `full896-stream` arm: its first-attempt 0/3 on
+the trio did not survive our own labeled second attempt (3/3). That is
+single-run variance in action, and more independent runs are what pins it
+down.
 
 ## What you need
 
@@ -51,7 +53,7 @@ scripts/replicate_k3_reap.sh full896-stream 14294 15925
 ```
 
 That makes divide-and-conquer easy: if a few people each take a slice of
-[`results.csv`](results.csv) (or tasks we never ran — all 198 IC-SWE Diamond
+[`results/`](results/) (or tasks we never ran — all 198 IC-SWE Diamond
 IDs work), the table fills itself. Say which IDs you're taking in the thread
 so work doesn't double up.
 
@@ -118,7 +120,7 @@ Never mix caps inside one reported column — the cap goes in the label.
 - If you change any condition (cap, sampling, context, cache size), please
   say so alongside your numbers — condition drift is how these comparisons
   die.
-- Our reference numbers per task: [`results.csv`](results.csv). Conditions:
+- Our reference numbers per task: [`results/`](results/). Conditions:
   [`README.md`](README.md).
 
 Post findings to the Reddit thread, or open an issue here.

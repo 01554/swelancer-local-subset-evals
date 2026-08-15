@@ -53,6 +53,6 @@ min here, more when grading is heavy).
 | qwen38_a95b_udiq1s_10800s | Qwen Code CLI 0.21.10-0.21.11 | macstudio-512gb | 131072 | temp 1.0 / top-p 0.95 / top-k 20 | 130.3 | - |
 | kimik3_streamed896_iq2xxs_18000s_attempt2 | Kimi Code CLI | macstudio-512gb | 131072 | temp 1.0 / top-p 0.95 | - | - |
 | gemma4_31b_nvfp4_pi_promptv1 | pi | rtx6000-96gb | 131072 | temp 1.0 / top-p 0.95 | 4.3 | 6.2 |
-| k27_q2_2bit | Kimi Code CLI | macstudio-512gb | 131072 | temp 1.0 / top-p 0.95 | - | - |
+| k27_q2_2bit | custom tool-aware solver (pre-CLI) | macstudio-512gb | 131072 | temp 1.0 / top-p 0.95 | - | - |
 | qwen38_reap256_iq1s_10800s | Qwen Code CLI 0.21.11 | macstudio-512gb | 131072 | temp 1.0 / top-p 0.95 / top-k 20 | 88.0 | - |
 <!-- RUNCONDITIONS:END -->
