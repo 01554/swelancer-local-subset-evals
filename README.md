@@ -57,6 +57,7 @@ _Per-task cells live in [`results/*.csv`](results/); tables below aggregate by s
 
 - Per-task results, split by execution environment: [`results/`](results/)
 - Environment / speed table (read before comparing across CSVs): [`environments.md`](environments.md)
+- Per-model commentary (behavior profiles): [`models/`](models/)
 - Per-task commentary: [`TASKS.md`](TASKS.md) (English) / [`TASKS.ja.md`](TASKS.ja.md) (日本語)
 - Task selection rules and common conditions: [`SELECTION.md`](SELECTION.md)
 - How to re-run any cell on your hardware: [`REPLICATION.md`](REPLICATION.md)
