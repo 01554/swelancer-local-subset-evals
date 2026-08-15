@@ -1,6 +1,6 @@
 # タスク解説(日本語)
 
-本評価で使う24問それぞれの内容を日本語で要約したものです。**問題文の全文はこのリポジトリには収録していません**(タスクは OpenAI の [SWE-Lancer ベンチマーク](https://github.com/openai/SWELancer-Benchmark)([論文](https://arxiv.org/abs/2502.12115))に属するため)。全文は公式リリースで `question_id` を引くか、各タスクの元になった Expensify/App の公開 issue(各見出しのリンク)を参照してください。
+本評価で使う24問それぞれの内容を日本語で要約したものです。**問題文の全文はこのリポジトリには収録していません**(タスクは OpenAI の [SWE-Lancer ベンチマーク](https://github.com/openai/SWELancer-Benchmark)([論文](https://arxiv.org/abs/2502.12115))に属するため)。全文は公式リリースで `question_id` を引くか、各タスクの元になった Expensify/App の公開 issue(各見出しのリンク)を参照してください。English version: [`TASKS.md`](TASKS.md)
 
 ## 全タスク共通の前提
 

@@ -95,7 +95,7 @@ _Auto-generated from [`results/*.csv`](results/) by `scripts/render_results.py` 
 
 - Per-task results, split by execution environment: [`results/`](results/)
 - Environment / speed table (read before comparing across CSVs): [`environments.md`](environments.md)
-- 各タスクの日本語解説: [`TASKS.ja.md`](TASKS.ja.md)
+- Per-task commentary: [`TASKS.md`](TASKS.md) (English) / [`TASKS.ja.md`](TASKS.ja.md) (日本語)
 - Task selection rules and common conditions: [`SELECTION.md`](SELECTION.md)
 - How to re-run any cell on your hardware: [`REPLICATION.md`](REPLICATION.md)
 
