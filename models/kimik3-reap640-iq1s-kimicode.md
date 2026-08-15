@@ -7,6 +7,17 @@
 | score | 7/18, $35,750 (sanity3 3/3 · hard5 2/5 · extended16 2/10, 6 tasks never ran) |
 | timeouts | 12 — every audited fail was cap-terminated, including all three hard5 losses (186 min each) |
 
+## Run conditions
+
+| | |
+|---|---|
+| engine | llama.cpp [`k3-stream` fork](https://github.com/01554/llama.cpp/tree/k3-stream) (Metal), `llama-server` |
+| serve flags | `-ngl 99 -c 131072 --jinja --cache-reuse 0 --temp 1.0 --top-p 0.95` |
+| sampling | temperature 1.0 · top-p 0.95 |
+| context | 131,072 |
+| rollout cap | 10800 s per task (whole-task wall clock; [why ours, not the paper's](../REPLICATION.md)) |
+| agent | Kimi Code CLI, one attempt per task |
+
 ## Read (English)
 
 **Owner of the single biggest scalp.** 6883 ($32,000 — hardware keyboard

@@ -8,6 +8,16 @@
 | score | 17/24, $48,000 (sanity3 3/3 · hard5 3/5 · extended16 11/16) |
 | avg min/task | 15.0 (sanity3) / 43.8 (all24), max ~2 h — cap never reached |
 
+## Run conditions (as recorded in [columns.csv](../results/columns.csv))
+
+| | |
+|---|---|
+| engine | llama.cpp server-cuda (Docker) |
+| sampling | temperature 1.0 · top-p 0.95 |
+| context | 131,072 |
+| rollout cap | 10800 s per task (never reached on this hardware) |
+| agent | pi, with the `promptv1` phantom-`​``python`-neutralizing note |
+
 ## Read (English)
 
 **A grinder that converts time into wins.** Task time scales with difficulty

@@ -8,6 +8,17 @@
 | score | 6/7 so far, $11,000 — sanity3 2/3 · hard5 4/4 decided, final task (15925) running |
 | timeouts | 0 — its one fail was a 21-minute natural exit |
 
+## Run conditions
+
+| | |
+|---|---|
+| engine | llama.cpp [`k3-stream` fork](https://github.com/01554/llama.cpp/tree/k3-stream) (Metal), `llama-server` |
+| serve flags | `-ngl 99 -c 131072 --jinja --temp 1.0 --top-p 0.95 --top-k 20` `--moe-stream --moe-stream-cache 400` |
+| sampling | temperature 1.0 · top-p 0.95 · top-k 20 (per the Unsloth card) |
+| context | 131,072 |
+| rollout cap | 10800 s per task |
+| agent | Qwen Code CLI 0.21.10→0.21.11; `QWEN_STREAM_IDLE_TIMEOUT_MS=0` (default 240 s idle kill is fatal at streamed prefill speed) |
+
 ## Read (English)
 
 **The best macstudio arm per task, and a grinder like its 27B sibling.**

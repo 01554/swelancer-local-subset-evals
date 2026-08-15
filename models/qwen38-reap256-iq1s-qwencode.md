@@ -9,6 +9,17 @@
 | timeouts | 0 — every fail was a natural exit, well under the cap |
 | avg min/task | sanity3 88.0 (vs 130.3 for its unpruned parent) |
 
+## Run conditions
+
+| | |
+|---|---|
+| engine | llama.cpp (Metal) — fork **or stock mainline**, both verified, `llama-server` |
+| serve flags | `-ngl 99 -c 131072 --jinja --temp 1.0 --top-p 0.95 --top-k 20` |
+| sampling | temperature 1.0 · top-p 0.95 · top-k 20 (per the Unsloth card) |
+| context | 131,072 |
+| rollout cap | 10800 s per task |
+| agent | Qwen Code CLI 0.21.11 (pinned); `QWEN_STREAM_IDLE_TIMEOUT_MS=0` (default 240 s idle kill is fatal at streamed prefill speed) |
+
 ## Read (English)
 
 **sanity3 sweep, hard5 wipeout — the KLD tail made flesh.** Held-out

@@ -8,6 +8,16 @@
 | score | 7/24, $9,250 (sanity3 2/3 · hard5 3/5 · extended16 2/16) |
 | avg min/task | 4.3 (sanity3) / 6.2 (all24) |
 
+## Run conditions (as recorded in [columns.csv](../results/columns.csv))
+
+| | |
+|---|---|
+| engine | llama.cpp server-cuda (Docker) |
+| sampling | temperature 1.0 · top-p 0.95 |
+| context | 131,072 |
+| rollout cap | 10800 s per task (never reached on this hardware) |
+| agent | pi, with the `promptv1` phantom-`​``python`-neutralizing note |
+
 ## Read (English)
 
 **A fail-fast sprinter.** Task times sit in a flat 3–10 minute band regardless of

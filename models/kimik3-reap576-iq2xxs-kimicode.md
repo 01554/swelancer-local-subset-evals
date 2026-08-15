@@ -7,6 +7,17 @@
 | score | 13/24, $19,000 (sanity3 3/3 · hard5 4/5 · extended16 6/16) |
 | timeouts | 9 — **every fail this arm produced was cap-terminated** (8 in extended16, plus its one hard5 miss at 187 min) |
 
+## Run conditions
+
+| | |
+|---|---|
+| engine | llama.cpp [`k3-stream` fork](https://github.com/01554/llama.cpp/tree/k3-stream) (Metal), `llama-server` |
+| serve flags | `-ngl 99 -c 131072 --jinja --cache-reuse 0 --temp 1.0 --top-p 0.95` |
+| sampling | temperature 1.0 · top-p 0.95 |
+| context | 131,072 |
+| rollout cap | 10800 s per task (whole-task wall clock; [why ours, not the paper's](../REPLICATION.md)) |
+| agent | Kimi Code CLI, one attempt per task |
+
 ## Read (English)
 
 **The strongest K3 arm per task, and the "bits beat experts" datapoint.**

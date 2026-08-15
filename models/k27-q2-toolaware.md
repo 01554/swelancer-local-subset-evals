@@ -8,6 +8,16 @@
 | score | 3/24, $2,000 — **by construction, not a measurement** |
 | avg min/task | - (per-task durations not recorded) |
 
+## Run conditions
+
+| | |
+|---|---|
+| engine | llama.cpp (Metal), `llama-server` |
+| sampling | temperature 1.0 · top-p 0.95 |
+| context | 131,072 |
+| limits | **no per-task wall clock** — instead a 900 s per-response cutoff, sized to fit 198 tasks into ~2 weeks (fired on 109/198 tasks, 75 zeroed; disclosed in the [original writeup](https://zenn.dev/hellohazime/articles/kimi_k27_code_swelancer_local)) |
+| agent | custom tool-aware solver (pre-CLI), one attempt per task |
+
 ## Read (English)
 
 **This column is the yardstick, not a contestant.** Every task set in this

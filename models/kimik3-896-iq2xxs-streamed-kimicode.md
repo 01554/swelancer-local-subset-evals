@@ -8,6 +8,17 @@
 | score | 7/11, $35,750 (sanity3 3/3 · hard5 2/5 · extended16 2/3; 13 extended16 tasks never ran) |
 | avg min/task | sanity3 **185.0** — 9¼ hours for the three easiest tasks |
 
+## Run conditions
+
+| | |
+|---|---|
+| engine | llama.cpp [`k3-stream` fork](https://github.com/01554/llama.cpp/tree/k3-stream) (Metal), `llama-server` |
+| serve flags | `-ngl 99 -c 131072 --jinja --cache-reuse 0 --temp 1.0 --top-p 0.95` `--moe-stream --moe-stream-cache 380` |
+| sampling | temperature 1.0 · top-p 0.95 |
+| context | 131,072 |
+| rollout cap | 18000 s per task (whole-task wall clock; [why ours, not the paper's](../REPLICATION.md)) |
+| agent | Kimi Code CLI, one attempt per task |
+
 ## Read (English)
 
 **The existence proof, and the cost of it.** A 711 GB model doing real
