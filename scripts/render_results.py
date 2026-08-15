@@ -17,6 +17,10 @@ out = [
     "",
     "✅ pass ❌ fail ⏱️ timeout (rollout cap hit, unfinished) 🔄 running — not run",
     "",
+    "Task sets (details in [SELECTION.md](SELECTION.md)): **probe** = 3 sanity tasks every build should pass · "
+    "**differential** = 5 tasks the K2.7 baseline failed · **battle16** = 16 hard tasks, also K2.7-failed, "
+    "selected by shortest description",
+    "",
 ]
 
 summary = []
@@ -29,11 +33,11 @@ for path in sorted(glob.glob("results/*.csv")):
     cols = header[3:]
     out.append(f"## {env}")
     out.append("")
-    out.append("| task | $ | " + " | ".join(cols) + " |")
-    out.append("|---|---:|" + "---|" * len(cols))
+    out.append("| task | set | $ | " + " | ".join(cols) + " |")
+    out.append("|---|---|---:|" + "---|" * len(cols))
     for r in data:
         cells = [SYM.get(v, v) for v in r[3:]]
-        out.append(f"| {r[0]} | {float(r[2]):,.0f} | " + " | ".join(cells) + " |")
+        out.append(f"| {r[0]} | {r[1]} | {float(r[2]):,.0f} | " + " | ".join(cells) + " |")
     passes, moneys, touts = [], [], []
     for i in range(len(cols)):
         p = sum(1 for r in data if r[3 + i] == "pass")
@@ -44,9 +48,9 @@ for path in sorted(glob.glob("results/*.csv")):
         moneys.append(f"${m:,.0f}")
         touts.append(str(t) if t else "0")
         summary.append((env, cols[i], p, n, m, t))
-    out.append("| **pass** | | " + " | ".join(passes) + " |")
-    out.append("| **earned** | | " + " | ".join(moneys) + " |")
-    out.append("| **timeouts** | | " + " | ".join(touts) + " |")
+    out.append("| **pass** | | | " + " | ".join(passes) + " |")
+    out.append("| **earned** | | | " + " | ".join(moneys) + " |")
+    out.append("| **timeouts** | | | " + " | ".join(touts) + " |")
     out.append("")
 
 meta = {}
