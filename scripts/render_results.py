@@ -17,9 +17,9 @@ out = [
     "",
     "✅ pass ❌ fail ⏱️ timeout (rollout cap hit, unfinished) 🔄 running — not run · in metadata rows, - = not recorded / unrecoverable (未取得), ≥N = N timeouts verified, rest unaudited",
     "",
-    "Task sets (details in [SELECTION.md](SELECTION.md)): **probe** = 3 sanity tasks every build should pass · "
-    "**differential** = 5 tasks the K2.7 baseline failed · **battle16** = 16 hard tasks, also K2.7-failed, "
-    "selected by shortest description",
+    "Task sets (details in [SELECTION.md](SELECTION.md)): **probe** = the 3 smallest-input tasks the K2.7 baseline solved (does-it-still-work gate) · "
+    "**differential** = the 5 smallest-input tasks K2.7 failed · **battle16** = 16 more K2.7-failed tasks, "
+    "selected by shortest title+description",
     "",
     "_Per-task cells live in [`results/*.csv`](results/); tables below aggregate by set._",
     "",

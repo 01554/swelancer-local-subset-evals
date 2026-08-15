@@ -27,7 +27,7 @@ _Auto-generated from [`results/*.csv`](results/) by `scripts/render_results.py` 
 | k27_q2_2bit | Kimi Code CLI | macstudio-512gb | 3/24 | $2,000 | - / - |
 | qwen38_reap256_iq1s_10800s | Qwen Code CLI 0.21.11 | macstudio-512gb | 3/8 | $2,000 | 88.0 / - |
 
-Task sets (details in [SELECTION.md](SELECTION.md)): **probe** = 3 sanity tasks every build should pass · **differential** = 5 tasks the K2.7 baseline failed · **battle16** = 16 hard tasks, also K2.7-failed, selected by shortest description
+Task sets (details in [SELECTION.md](SELECTION.md)): **probe** = the 3 smallest-input tasks the K2.7 baseline solved (does-it-still-work gate) · **differential** = the 5 smallest-input tasks K2.7 failed · **battle16** = 16 more K2.7-failed tasks, selected by shortest title+description
 
 _Per-task cells live in [`results/*.csv`](results/); tables below aggregate by set._
 

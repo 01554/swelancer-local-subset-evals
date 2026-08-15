@@ -3,7 +3,7 @@
 Exact task lists behind every number published on the
 [Kimi-K3-REAP-512GB-GGUF](https://huggingface.co/hellohazime/Kimi-K3-REAP-512GB-GGUF)
 model card, so anyone can re-run the same tasks. Machine-readable results:
-[`results.csv`](results.csv).
+[`results/`](results/) (per-environment CSVs).
 
 Task **content is not mirrored here** — the tasks belong to OpenAI's
 [SWE-Lancer benchmark](https://arxiv.org/abs/2502.12115) (IC SWE, Diamond
@@ -41,7 +41,7 @@ baseline solved; used as a does-it-still-work gate for every new build.
 K2.7 baseline failed (recorded inputs 16k–104k tokens).
 
 **battle16 (16 tasks)** — the 1.56 bpw × 640 vs 1.91 bpw × 576 head-to-head
-extension, currently running. Selection is fully reproducible: from the same
+extension (576 complete; 640 stopped at 10 of 16). Selection is fully reproducible: from the same
 105 K2.7-failed tasks, sort ascending by `len(title) + len(description)`
 (from the benchmark's task table), drop the 5 already used by the
 differential set, take the first 16. Prize prices were not consulted during
@@ -56,7 +56,8 @@ complete, then rolled into 24-task totals.
 ## Also tested on the differential trio (14294 / 15815_1 / 15925)
 
 - Full 896-expert UD-IQ2_XXS streamed from SSD (llama.cpp MoE-streaming
-  patch, ~2/3 decode speed): 0/3 — the oddity discussed on the model card.
+  patch, ~2/3 decode speed): 0/3 — did not replicate on a second, separately
+  labeled attempt (attempt2 column: 3/3); read as single-attempt variance.
 - 4-bit × 240-expert prune (F32 router): degenerated on the agentic prompt;
   not run to completion on these tasks.
 
@@ -67,8 +68,7 @@ unpruned Qwen3.8-2.4T-A95B (unsloth UD-IQ1_S, 508 GB) served via llama.cpp
 MoE streaming (cache 400 GiB, ~5-6 tok/s decode), driven by **Qwen Code CLI
 0.21.10–0.21.11** (the maker's-own-agent principle: each model gets its
 vendor's official CLI, as Kimi models get Kimi Code CLI). Same 10800 s cap,
-one attempt per task. 4 of 8 tasks measured so far; `pending` cells are
-deferred, not failures. Note: one earlier batch was discarded due to a solver
+one attempt per task. 7 of 8 tasks measured; the last is running. Note: one earlier batch was discarded due to a solver
 env bug (stream idle timeout) before these runs.
 
 **qwen38_reap256_iq1s_10800s** — our expert+width-pruned build of the model
