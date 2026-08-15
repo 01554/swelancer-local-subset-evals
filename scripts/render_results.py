@@ -21,6 +21,8 @@ out = [
     "**differential** = 5 tasks the K2.7 baseline failed · **battle16** = 16 hard tasks, also K2.7-failed, "
     "selected by shortest description",
     "",
+    "_Per-task cells live in [`results/*.csv`](results/); tables below aggregate by set._",
+    "",
 ]
 
 summary = []
@@ -33,11 +35,16 @@ for path in sorted(glob.glob("results/*.csv")):
     cols = header[3:]
     out.append(f"## {env}")
     out.append("")
-    out.append("| task | set | $ | " + " | ".join(cols) + " |")
-    out.append("|---|---|---:|" + "---|" * len(cols))
-    for r in data:
-        cells = [SYM.get(v, v) for v in r[3:]]
-        out.append(f"| {r[0]} | {r[1]} | {float(r[2]):,.0f} | " + " | ".join(cells) + " |")
+    out.append("| set | " + " | ".join(cols) + " |")
+    out.append("|---|" + "---|" * len(cols))
+    for s in ("probe", "differential", "battle16"):
+        cells = []
+        srows = [r for r in data if r[1] == s]
+        for i in range(len(cols)):
+            p = sum(1 for r in srows if r[3 + i] == "pass")
+            n = sum(1 for r in srows if r[3 + i] in ("pass", "fail", "timeout"))
+            cells.append(f"{p}/{n}" if n else "—")
+        out.append(f"| {s} ({len(srows)}) | " + " | ".join(cells) + " |")
     passes, moneys, touts = [], [], []
     for i in range(len(cols)):
         p = sum(1 for r in data if r[3 + i] == "pass")
@@ -48,9 +55,9 @@ for path in sorted(glob.glob("results/*.csv")):
         moneys.append(f"${m:,.0f}")
         touts.append(str(t) if t else "0")
         summary.append((env, cols[i], p, n, m, t))
-    out.append("| **pass** | | | " + " | ".join(passes) + " |")
-    out.append("| **earned** | | | " + " | ".join(moneys) + " |")
-    out.append("| **timeouts** | | | " + " | ".join(touts) + " |")
+    out.append("| **total pass** | " + " | ".join(passes) + " |")
+    out.append("| **earned** | " + " | ".join(moneys) + " |")
+    out.append("| **timeouts** | " + " | ".join(touts) + " |")
     out.append("")
 
 meta = {}
