@@ -12,11 +12,14 @@
 
 | | |
 |---|---|
-| engine | llama.cpp server-cuda (Docker) |
-| sampling | temperature 1.0 · top-p 0.95 |
+| engine | llama.cpp `ghcr.io/ggml-org/llama.cpp:server-cuda` (Docker, pulled 2026-08-14, digest `6b0bf497…`) |
+| serve flags | `-hf CISCai/gemma-4-31B-it-NVFP4-turbo-GGUF:NVFP4 --alias gemma-4-31b -ngl 999 -c 131072 --temp 1.0 --top-p 0.95` |
+| sampling | temperature 1.0 · top-p 0.95 (server-side defaults) |
 | context | 131,072 |
 | rollout cap | 10800 s per task (never reached on this hardware) |
-| agent | pi, with the `promptv1` phantom-`​``python`-neutralizing note |
+| agent | pi 0.84.1 (`@earendil-works/pi-coding-agent@0.84.1`), print mode (`-p`), one attempt per task |
+| agent config | custom provider via `~/.pi/agent/models.json` (`api: openai-completions`, host llama-server over LAN); `promptv1` phantom-python-neutralizing note appended to AGENT_PROMPT |
+| in-container quirks | task image ships node v20.15.1, too old for pi's undici — solver installs node 22 via the image's nvm before `npm install -g` |
 
 ## Read (English)
 
