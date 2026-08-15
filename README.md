@@ -11,7 +11,7 @@ prior to the split remains in the old repo.
 
 _Auto-generated from [`results/*.csv`](results/) by `scripts/render_results.py` — edit those, not this section._
 
-✅ pass ❌ fail ⏱️ timeout (rollout cap hit, unfinished) 🔄 running — not run · in metadata rows, - = not recorded / unrecoverable (未取得), ≥N = N timeouts verified, rest unaudited
+CSV cell vocabulary: `pass` / `fail` (finished, graded wrong) / `timeout` (rollout cap hit, unfinished) / `running` / `not_run`. In the tables below: - = not recorded / unrecoverable (未取得) · ≥N = N timeouts verified, rest unaudited.
 
 Task sets (details in [SELECTION.md](SELECTION.md)): **sanity3** = the 3 smallest-input tasks the K2.7 baseline solved (does-it-still-work gate) · **hard5** = the 5 smallest-input tasks K2.7 failed · **extended16** = 16 more K2.7-failed tasks, selected by shortest title+description
 

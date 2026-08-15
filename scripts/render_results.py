@@ -9,14 +9,13 @@ import csv
 import glob
 import os
 
-SYM = {"pass": "✅", "fail": "❌", "timeout": "⏱️", "running": "🔄", "not_run": "—", "": "·"}
 BEGIN, END = "<!-- RESULTS:BEGIN -->", "<!-- RESULTS:END -->"
 SETS = ("sanity3", "hard5", "extended16")
 
 out = [
     "_Auto-generated from [`results/*.csv`](results/) by `scripts/render_results.py` — edit those, not this section._",
     "",
-    "✅ pass ❌ fail ⏱️ timeout (rollout cap hit, unfinished) 🔄 running — not run · in metadata rows, - = not recorded / unrecoverable (未取得), ≥N = N timeouts verified, rest unaudited",
+    "CSV cell vocabulary: `pass` / `fail` (finished, graded wrong) / `timeout` (rollout cap hit, unfinished) / `running` / `not_run`. In the tables below: - = not recorded / unrecoverable (未取得) · ≥N = N timeouts verified, rest unaudited.",
     "",
     "Task sets (details in [SELECTION.md](SELECTION.md)): **sanity3** = the 3 smallest-input tasks the K2.7 baseline solved (does-it-still-work gate) · "
     "**hard5** = the 5 smallest-input tasks K2.7 failed · **extended16** = 16 more K2.7-failed tasks, "
