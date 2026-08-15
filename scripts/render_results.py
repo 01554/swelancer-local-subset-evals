@@ -57,19 +57,40 @@ if os.path.exists("results/columns.csv"):
 lb_lines = [
     "### Leaderboard",
     "",
-    "| column | agent | environment | ctx | sampling | pass | earned | avg min/task |",
-    "|---|---|---|---|---|---:|---:|---:|",
+    "| column | agent | environment | pass | earned | avg min/task |",
+    "|---|---|---|---:|---:|---:|",
 ]
 lb = sorted(summary, key=lambda s: (-s[4], -s[2]))
 for env, col, p, n, m, t in lb:
     mrow = meta.get(col, {})
     g = lambda k: mrow.get(k) or "?"
     lb_lines.append(
-        f"| {col} | {g('agent')} | {env} | {g('ctx')} | {g('sampling')} "
-        f"| {p}/{n} | ${m:,.0f} | {g('avg_task_min')} |"
+        f"| {col} | {g('agent')} | {env} | {p}/{n} | ${m:,.0f} | {g('avg_task_min')} |"
     )
 lb_lines.append("")
 out[4:4] = lb_lines
+
+# per-run conditions table -> environments.md (same rows as the leaderboard)
+env_lines = [
+    "| column | agent | environment | ctx | sampling | avg min/task |",
+    "|---|---|---|---|---|---:|",
+]
+for env, col, p, n, m, t in lb:
+    mrow = meta.get(col, {})
+    g = lambda k: mrow.get(k) or "?"
+    env_lines.append(
+        f"| {col} | {g('agent')} | {env} | {g('ctx')} | {g('sampling')} | {g('avg_task_min')} |"
+    )
+EBEGIN, EEND = "<!-- RUNCONDITIONS:BEGIN -->", "<!-- RUNCONDITIONS:END -->"
+envmd = open("environments.md").read()
+if EBEGIN in envmd and EEND in envmd:
+    head, rest = envmd.split(EBEGIN, 1)
+    _, tail = rest.split(EEND, 1)
+    envmd = head + "\n".join([EBEGIN] + env_lines + [EEND]) + tail
+    open("environments.md", "w").write(envmd)
+    print("environments.md run-conditions table updated")
+else:
+    print("WARNING: RUNCONDITIONS markers missing in environments.md")
 
 section = "\n".join([BEGIN, "## Results", ""] + out + [END])
 readme = open("README.md").read()
