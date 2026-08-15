@@ -25,6 +25,11 @@ out = [
     "",
 ]
 
+meta = {}
+if os.path.exists("results/columns.csv"):
+    for r in csv.DictReader(open("results/columns.csv")):
+        meta[r["column"]] = r
+
 summary = []
 for path in sorted(glob.glob("results/*.csv")):
     env = os.path.basename(path)[:-4]
@@ -53,17 +58,15 @@ for path in sorted(glob.glob("results/*.csv")):
         n = sum(1 for r in data if r[3 + i] in ("pass", "fail", "timeout"))
         passes.append(f"**{p}/{n}**")
         moneys.append(f"${m:,.0f}")
-        touts.append(str(t) if t else "0")
+        # only claim a timeout count for columns whose run recorded the
+        # fail/timeout distinction; otherwise it is unknown, not zero
+        aware = meta.get(cols[i], {}).get("timeout_aware")
+        touts.append(str(t) if aware else "?")
         summary.append((env, cols[i], p, n, m, t))
     out.append("| **total pass** | " + " | ".join(passes) + " |")
     out.append("| **earned** | " + " | ".join(moneys) + " |")
     out.append("| **timeouts** | " + " | ".join(touts) + " |")
     out.append("")
-
-meta = {}
-if os.path.exists("results/columns.csv"):
-    for r in csv.DictReader(open("results/columns.csv")):
-        meta[r["column"]] = r
 
 lb_lines = [
     "### Leaderboard",
