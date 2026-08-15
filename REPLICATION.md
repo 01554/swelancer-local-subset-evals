@@ -49,8 +49,9 @@ API-speed models: its only time limit is 300 s per code execution, and it
 has no per-task wall clock at all. On a Mac Studio serving ~3 tok/s, that
 shape of limit is unusable — a single agent turn can take longer than
 300 s to *generate*, and our K2.7 run showed that cutting individual
-responses poisons results (a 900 s response cutoff fired on 109 of 198
-tasks; 75 of them scored zero). So we replaced per-step cutoffs with one
+responses poisons results (a 900 s response cutoff — sized to squeeze all
+198 tasks into about two weeks, which the run hit at 308 h — fired on 109
+of 198 tasks; 75 of them scored zero). So we replaced per-step cutoffs with one
 whole-task wall clock: 10800 s, roughly 2× the K2.7 full-run average of
 1.6 h/task. Treat it as a condition of the experiment, which is why it is
 part of every column label.
