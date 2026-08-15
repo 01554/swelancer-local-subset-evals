@@ -6,10 +6,10 @@ never reached on a fast one. Columns therefore live in per-environment CSVs
 under [`results/`](results/), and cross-environment comparisons should be read
 with this table in hand.
 
-| environment | hardware | engine | ctx | sampling | typical decode | cap reached in practice? |
-|---|---|---|---|---|---|---|
-| macstudio-512gb | Mac Studio M3 Ultra, 512 GB unified | llama.cpp (Metal, k3-stream fork) | 131072 | temp 1.0, top-p 0.95, cache-reuse 0 | ~3 tok/s (resident), ~2 tok/s (SSD-streamed) | often — 8/10 battle16 fails were cap-terminated |
-| rtx6000-96gb | RTX PRO 6000 Blackwell 96 GB, DDR4 host | llama.cpp server-cuda (Docker) | 131072 | temp 1.0, top-p 0.95 | 26-64 tok/s (model-dependent) | never |
+| environment | hardware | engine | typical decode | cap reached in practice? |
+|---|---|---|---|---|
+| macstudio-512gb | Mac Studio M3 Ultra, 512 GB unified | llama.cpp (Metal, k3-stream fork) | ~3 tok/s (resident), ~2 tok/s (SSD-streamed) | often — 8/10 battle16 fails were cap-terminated |
+| rtx6000-96gb | RTX PRO 6000 Blackwell 96 GB, DDR4 host | llama.cpp server-cuda (Docker) | 26-64 tok/s (model-dependent) | never |
 
 ## Measured speeds (rtx6000-96gb)
 

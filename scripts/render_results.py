@@ -57,15 +57,17 @@ if os.path.exists("results/columns.csv"):
 lb_lines = [
     "### Leaderboard",
     "",
-    "| column | agent | environment | pass | earned | avg min/task |",
-    "|---|---|---|---:|---:|---:|",
+    "| column | agent | environment | ctx | sampling | pass | earned | avg min/task |",
+    "|---|---|---|---|---|---:|---:|---:|",
 ]
 lb = sorted(summary, key=lambda s: (-s[4], -s[2]))
 for env, col, p, n, m, t in lb:
     mrow = meta.get(col, {})
-    agent = mrow.get("agent") or "?"
-    avg = mrow.get("avg_task_min") or "?"
-    lb_lines.append(f"| {col} | {agent} | {env} | {p}/{n} | ${m:,.0f} | {avg} |")
+    g = lambda k: mrow.get(k) or "?"
+    lb_lines.append(
+        f"| {col} | {g('agent')} | {env} | {g('ctx')} | {g('sampling')} "
+        f"| {p}/{n} | ${m:,.0f} | {g('avg_task_min')} |"
+    )
 lb_lines.append("")
 out[4:4] = lb_lines
 
