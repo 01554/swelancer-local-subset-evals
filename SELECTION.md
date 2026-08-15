@@ -19,7 +19,8 @@ rtx6000 arms' live in [`results/columns.csv`](results/columns.csv) and
 - Agent: Moonshot's [Kimi Code CLI](https://github.com/MoonshotAI/kimi-code)
   inside the stock SWE-Lancer task container (exception: the K2.7 baseline
   predates the CLI harness — its 198-task run used our custom tool-aware
-  solver, as disclosed in the original writeup), pointed at a local
+  solver at context 262,144 — twice the context of every later arm — as
+  disclosed in the original writeup), pointed at a local
   `llama-server` (Unsloth llama.cpp fork, K3 branch).
 - Sampling: temperature 1.0, top-p 0.95; context 131,072; `--cache-reuse 0`.
 - Rollout cap: 10,800 s per task (the full-896 SSD-streamed check used

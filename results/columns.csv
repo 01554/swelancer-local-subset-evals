@@ -1,5 +1,5 @@
 column,agent,avg_min_sanity3,avg_min_hard5,avg_min_extended16,avg_min_all24,ctx,sampling,timeout_aware,display,url,page
-k27_q2_2bit,custom tool-aware solver (pre-CLI),14.1,27.7,98.0,72.9,131072,temp 1.0 / top-p 0.95,,K2.7-Code Q2 (baseline),https://huggingface.co/unsloth/Kimi-K2.7-Code-GGUF,models/k27-q2-toolaware.md
+k27_q2_2bit,custom tool-aware solver (pre-CLI),14.1,27.7,98.0,72.9,262144,temp 1.0 / top-p 0.95,,K2.7-Code Q2 (baseline),https://huggingface.co/unsloth/Kimi-K2.7-Code-GGUF,models/k27-q2-toolaware.md
 kimik3_reap640_iq1s,Kimi Code CLI,67.7,167.3,,,131072,temp 1.0 / top-p 0.95,1,K3 REAP640 IQ1_S,https://huggingface.co/hellohazime/Kimi-K3-REAP-512GB-GGUF,models/kimik3-reap640-iq1s-kimicode.md
 kimik3_reap576_iq2xxs,Kimi Code CLI,63.9,134.5,157.4,140.9,131072,temp 1.0 / top-p 0.95,1,K3 REAP576 IQ2_XXS,https://huggingface.co/hellohazime/Kimi-K3-REAP-512GB-GGUF,models/kimik3-reap576-iq2xxs-kimicode.md
 kimik3_streamed896_iq2xxs_18000s,Kimi Code CLI,185.0,,,,131072,temp 1.0 / top-p 0.95,,K3 full-896 streamed (cap 18000s),https://huggingface.co/unsloth/Kimi-K3-GGUF,models/kimik3-896-iq2xxs-streamed-kimicode.md

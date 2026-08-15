@@ -14,7 +14,7 @@
 |---|---|
 | engine | llama.cpp (Metal), `llama-server` |
 | sampling | temperature 1.0 · top-p 0.95 |
-| context | 131,072 |
+| context | **262,144** — twice the 131,072 every later arm used (LM Studio -> llama.cpp switch mid-project, per the original writeup) |
 | limits | **no per-task wall clock** — instead a 900 s per-response cutoff, sized to fit 198 tasks into ~2 weeks (fired on 109/198 tasks, 75 zeroed; disclosed in the [original writeup](https://zenn.dev/hellohazime/articles/kimi_k27_code_swelancer_local)) |
 | agent | custom tool-aware solver (pre-CLI), one attempt per task |
 
