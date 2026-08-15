@@ -37,12 +37,18 @@ date,model,quant,size_gb,engine,ctx,prefill_tps,decode_tps,notes
 
 Same rows as the README leaderboard; fill your own rows in results/columns.csv.
 
+macstudio avg-min figures are wall time from task start to grading end
+(run-dir birth → results.csv mtime in the harness `runs/` archive), so they
+include SWE-Lancer grading time on top of the agent rollout; rollout caps
+therefore bound them only loosely (a capped 180 min rollout can show ~185-190
+min here, more when grading is heavy).
+
 <!-- RUNCONDITIONS:BEGIN -->
 | column | agent | environment | ctx | sampling | avg min/task probe3 | avg min/task all24 |
 |---|---|---|---|---|---:|---:|
 | qwen38_27b_bf16_pi_promptv1 | pi | rtx6000-96gb | 131072 | temp 1.0 / top-p 0.95 | 15.0 | 43.8 |
-| kimik3_streamed896_iq2xxs_18000s | Kimi Code CLI | macstudio-512gb | 131072 | temp 1.0 / top-p 0.95 | ? | ? |
 | kimik3_reap640_iq1s | Kimi Code CLI | macstudio-512gb | 131072 | temp 1.0 / top-p 0.95 | ? | ? |
+| kimik3_streamed896_iq2xxs_18000s | Kimi Code CLI | macstudio-512gb | 131072 | temp 1.0 / top-p 0.95 | 185.0 | ? |
 | kimik3_reap576_iq2xxs | Kimi Code CLI | macstudio-512gb | 131072 | temp 1.0 / top-p 0.95 | ? | ? |
 | kimik3_streamed896_iq2xxs_18000s_attempt2 | Kimi Code CLI | macstudio-512gb | 131072 | temp 1.0 / top-p 0.95 | ? | ? |
 | gemma4_31b_nvfp4_pi_promptv1 | pi | rtx6000-96gb | 131072 | temp 1.0 / top-p 0.95 | 4.3 | 6.2 |

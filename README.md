@@ -18,8 +18,8 @@ _Auto-generated from [`results/*.csv`](results/) by `scripts/render_results.py` 
 | column | agent | environment | pass | earned | avg min/task (probe3 / all24) |
 |---|---|---|---:|---:|---:|
 | qwen38_27b_bf16_pi_promptv1 | pi | rtx6000-96gb | 17/24 | $48,000 | 15.0 / 43.8 |
-| kimik3_streamed896_iq2xxs_18000s | Kimi Code CLI | macstudio-512gb | 7/11 | $35,750 | ? / ? |
-| kimik3_reap640_iq1s | Kimi Code CLI | macstudio-512gb | 6/10 | $35,500 | ? / ? |
+| kimik3_reap640_iq1s | Kimi Code CLI | macstudio-512gb | 7/18 | $35,750 | ? / ? |
+| kimik3_streamed896_iq2xxs_18000s | Kimi Code CLI | macstudio-512gb | 7/11 | $35,750 | 185.0 / ? |
 | kimik3_reap576_iq2xxs | Kimi Code CLI | macstudio-512gb | 13/24 | $19,000 | ? / ? |
 | kimik3_streamed896_iq2xxs_18000s_attempt2 | Kimi Code CLI | macstudio-512gb | 3/3 | $10,000 | ? / ? |
 | gemma4_31b_nvfp4_pi_promptv1 | pi | rtx6000-96gb | 7/24 | $9,250 | 4.3 / 6.2 |
@@ -37,9 +37,9 @@ _Per-task cells live in [`results/*.csv`](results/); tables below aggregate by s
 |---|---|---|---|---|---|---|---|
 | probe (3) | 3/3 | 3/3 | 3/3 | 3/3 | — | 2/3 | 3/3 |
 | differential (5) | 0/5 | 2/5 | 4/5 | 2/5 | 3/3 | 3/3 | 0/5 |
-| battle16 (16) | 0/16 | 1/2 | 6/16 | 2/3 | — | — | — |
-| **total pass** | **3/24** | **6/10** | **13/24** | **7/11** | **3/3** | **5/6** | **3/8** |
-| **earned** | $2,000 | $35,500 | $19,000 | $35,750 | $10,000 | $7,000 | $2,000 |
+| battle16 (16) | 0/16 | 2/10 | 6/16 | 2/3 | — | — | — |
+| **total pass** | **3/24** | **7/18** | **13/24** | **7/11** | **3/3** | **5/6** | **3/8** |
+| **earned** | $2,000 | $35,750 | $19,000 | $35,750 | $10,000 | $7,000 | $2,000 |
 | **timeouts** | ? | ? | ? | ? | ? | 0 | 0 |
 
 ## rtx6000-96gb
