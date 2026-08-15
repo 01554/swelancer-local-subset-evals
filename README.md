@@ -21,6 +21,7 @@ _Per-task cells live in [`results/*.csv`](results/); tables below aggregate by s
 
 | column | agent | environment | pass | earned | avg min/task |
 |---|---|---|---:|---:|---:|
+| [Qwen3.8-27B BF16 (Qwen Code)](https://huggingface.co/unsloth/Qwen3.8-27B-GGUF) | Qwen Code CLI | rtx6000-96gb | 19/24 | $53,750 | 29.1 |
 | [Qwen3.8-27B BF16](models/qwen38-27b-bf16-pi.md) | pi | rtx6000-96gb | 17/24 | $48,000 | 43.8 |
 | [K3 REAP576 IQ2_XXS](models/kimik3-reap576-iq2xxs-kimicode.md) | Kimi Code CLI | macstudio-512gb | 13/24 | $19,000 | 140.9 |
 | [Gemma-4-31B NVFP4](models/gemma4-31b-nvfp4-pi.md) | pi | rtx6000-96gb | 7/24 | $9,250 | 6.2 |
@@ -36,6 +37,7 @@ _Per-task cells live in [`results/*.csv`](results/); tables below aggregate by s
 | [K3 full-896 streamed (cap 18000s)](models/kimik3-896-iq2xxs-streamed-kimicode.md) | macstudio-512gb | 3/3 | $2,000 | 185.0 |
 | [Qwen3.8 REAP-256GB](models/qwen38-reap256-iq1s-qwencode.md) | macstudio-512gb | 3/3 | $2,000 | 88.0 |
 | [Qwen3.8-27B BF16](models/qwen38-27b-bf16-pi.md) | rtx6000-96gb | 3/3 | $2,000 | 15.0 |
+| [Qwen3.8-27B BF16 (Qwen Code)](https://huggingface.co/unsloth/Qwen3.8-27B-GGUF) | rtx6000-96gb | 3/3 | $2,000 | 13.7 |
 | [Qwen3.8-2.4T UD-IQ1_S streamed](models/qwen38-a95b-udiq1s-qwencode.md) | macstudio-512gb | 2/3 | $1,500 | 130.3 |
 | [Gemma-4-31B NVFP4](models/gemma4-31b-nvfp4-pi.md) | rtx6000-96gb | 2/3 | $1,000 | 4.3 |
 
@@ -44,6 +46,7 @@ _Per-task cells live in [`results/*.csv`](results/); tables below aggregate by s
 | column | environment | pass | earned | avg min/task |
 |---|---|---:|---:|---:|
 | [Qwen3.8-2.4T UD-IQ1_S streamed](models/qwen38-a95b-udiq1s-qwencode.md) | macstudio-512gb | 5/5 | $11,500 | 140.0 |
+| [Qwen3.8-27B BF16 (Qwen Code)](https://huggingface.co/unsloth/Qwen3.8-27B-GGUF) | rtx6000-96gb | 5/5 | $11,500 | - |
 | [K3 REAP576 IQ2_XXS](models/kimik3-reap576-iq2xxs-kimicode.md) | macstudio-512gb | 4/5 | $11,000 | 134.5 |
 | [Qwen3.8-27B BF16](models/qwen38-27b-bf16-pi.md) | rtx6000-96gb | 3/5 | $9,000 | - |
 | [Gemma-4-31B NVFP4](models/gemma4-31b-nvfp4-pi.md) | rtx6000-96gb | 3/5 | $7,000 | - |
@@ -56,6 +59,7 @@ _Per-task cells live in [`results/*.csv`](results/); tables below aggregate by s
 
 | column | environment | pass | earned | avg min/task |
 |---|---|---:|---:|---:|
+| [Qwen3.8-27B BF16 (Qwen Code)](https://huggingface.co/unsloth/Qwen3.8-27B-GGUF) | rtx6000-96gb | 11/16 | $40,250 | - |
 | [Qwen3.8-27B BF16](models/qwen38-27b-bf16-pi.md) | rtx6000-96gb | 11/16 | $37,000 | - |
 | [K3 REAP576 IQ2_XXS](models/kimik3-reap576-iq2xxs-kimicode.md) | macstudio-512gb | 6/16 | $6,000 | 157.4 |
 | [Gemma-4-31B NVFP4](models/gemma4-31b-nvfp4-pi.md) | rtx6000-96gb | 2/16 | $1,250 | - |
@@ -84,14 +88,14 @@ _Per-task cells live in [`results/*.csv`](results/); tables below aggregate by s
 
 ## rtx6000-96gb
 
-| set | gemma4_31b_nvfp4_pi_promptv1 | qwen38_27b_bf16_pi_promptv1 |
-|---|---|---|
-| sanity3 (3) | 2/3 | 3/3 |
-| hard5 (5) | 3/5 | 3/5 |
-| extended16 (16) | 2/16 | 11/16 |
-| **total pass** | **7/24** | **17/24** |
-| **earned** | $9,250 | $48,000 |
-| **timeouts** | 0 | 0 |
+| set | gemma4_31b_nvfp4_pi_promptv1 | qwen38_27b_bf16_pi_promptv1 | qwen38_27b_bf16_qwencode_promptv1 |
+|---|---|---|---|
+| sanity3 (3) | 2/3 | 3/3 | 3/3 |
+| hard5 (5) | 3/5 | 3/5 | 5/5 |
+| extended16 (16) | 2/16 | 11/16 | 11/16 |
+| **total pass** | **7/24** | **17/24** | **19/24** |
+| **earned** | $9,250 | $48,000 | $53,750 |
+| **timeouts** | 0 | 0 | 0 |
 
 <!-- RESULTS:END -->
 
