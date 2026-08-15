@@ -8,9 +8,8 @@ with this table in hand.
 
 | environment | hardware | engine | typical decode | cap reached in practice? |
 |---|---|---|---|---|
-| macstudio-512gb | Mac Studio M3 Ultra, 512 GB unified | llama.cpp (Metal, k3-stream fork) | ~3 tok/s (resident), ~2 tok/s (SSD-streamed) | often — 8/10 battle16 fails were cap-terminated |
+| macstudio-512gb | Mac Studio M3 Ultra, 512 GB unified (driven remotely from devbox) | llama.cpp (Metal, k3-stream fork) | ~3 tok/s (resident), ~2 tok/s (SSD-streamed) | often — 8/10 battle16 fails were cap-terminated |
 | rtx6000-96gb | RTX PRO 6000 Blackwell 96 GB, DDR4 host | llama.cpp server-cuda (Docker) | 26-64 tok/s (model-dependent) | never |
-| devbox | (neighbor box — specs TBD) | TBD | TBD | TBD |
 
 ## Measured speeds (rtx6000-96gb)
 
