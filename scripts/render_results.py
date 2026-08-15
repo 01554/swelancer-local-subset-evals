@@ -57,7 +57,7 @@ if os.path.exists("results/columns.csv"):
 lb_lines = [
     "### Leaderboard",
     "",
-    "| column | agent | environment | pass | earned | avg min/task |",
+    "| column | agent | environment | pass | earned | avg min/task (probe3 / all24) |",
     "|---|---|---|---:|---:|---:|",
 ]
 lb = sorted(summary, key=lambda s: (-s[4], -s[2]))
@@ -65,21 +65,21 @@ for env, col, p, n, m, t in lb:
     mrow = meta.get(col, {})
     g = lambda k: mrow.get(k) or "?"
     lb_lines.append(
-        f"| {col} | {g('agent')} | {env} | {p}/{n} | ${m:,.0f} | {g('avg_task_min')} |"
+        f"| {col} | {g('agent')} | {env} | {p}/{n} | ${m:,.0f} | {g('avg_min_probe3')} / {g('avg_min_all24')} |"
     )
 lb_lines.append("")
 out[4:4] = lb_lines
 
 # per-run conditions table -> environments.md (same rows as the leaderboard)
 env_lines = [
-    "| column | agent | environment | ctx | sampling | avg min/task |",
-    "|---|---|---|---|---|---:|",
+    "| column | agent | environment | ctx | sampling | avg min/task probe3 | avg min/task all24 |",
+    "|---|---|---|---|---|---:|---:|",
 ]
 for env, col, p, n, m, t in lb:
     mrow = meta.get(col, {})
     g = lambda k: mrow.get(k) or "?"
     env_lines.append(
-        f"| {col} | {g('agent')} | {env} | {g('ctx')} | {g('sampling')} | {g('avg_task_min')} |"
+        f"| {col} | {g('agent')} | {env} | {g('ctx')} | {g('sampling')} | {g('avg_min_probe3')} | {g('avg_min_all24')} |"
     )
 EBEGIN, EEND = "<!-- RUNCONDITIONS:BEGIN -->", "<!-- RUNCONDITIONS:END -->"
 envmd = open("environments.md").read()
