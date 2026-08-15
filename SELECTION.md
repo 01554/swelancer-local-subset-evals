@@ -27,6 +27,8 @@ rtx6000 arms' live in [`results/columns.csv`](results/columns.csv) and
   paper's** — upstream's only limit (300 s per code execution) assumes
   API-speed models and is unusable at ~3 tok/s, so we bound the whole task
   instead; see REPLICATION.md.
+- **Text-only.** All arms run without vision input — a standing condition
+  of this eval (details and the visually-dependent task tally: TASKS.md).
 - **One attempt per task.** Genuine failures were never re-rolled. Two tasks
   (24508_791, 15815_1) hit a harness config error before the model was ever
   invoked; those were re-scheduled once and the re-run counts as the first
