@@ -5,7 +5,7 @@
 | checkpoint | [Kimi-K3-REAP-512GB-GGUF](https://huggingface.co/hellohazime/Kimi-K3-REAP-512GB-GGUF) REAP640-IQ1_S (441 GB) — 640 of 896 experts kept per layer, en+code saliency; experts uniform 1.56 bpw |
 | engine | llama.cpp k3-stream (Metal), resident; decode ~3 tok/s |
 | score | 7/18, $35,750 (sanity3 3/3 · hard5 2/5 · extended16 2/10, 6 tasks never ran) |
-| timeouts | 12 — every audited fail was cap-terminated, including all three hard5 losses (186 min each) |
+| timeouts | 11 — every audited fail was cap-terminated (8 in extended16, 3 in hard5 at 186 min each) |
 
 ## Run conditions
 
