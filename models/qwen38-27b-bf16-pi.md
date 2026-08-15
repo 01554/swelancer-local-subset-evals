@@ -19,7 +19,8 @@
 | rollout cap | 10800 s per task (never reached; longest task ~2 h) |
 | agent | pi 0.84.1 (`@earendil-works/pi-coding-agent@0.84.1`), print mode (`-p`), one attempt per task |
 | agent config | custom provider via `~/.pi/agent/models.json` (`api: openai-completions`, host llama-server over LAN); same `promptv1` note as all rtx6000 arms |
-| in-container quirks | node 22 via nvm (same as gemma4 run); mmproj is loaded server-side but unused — pi sends text-only requests |
+| in-container quirks | node 22 via nvm (same as gemma4 run) |
+| modality | text-only. Not an explicit choice at setup time: pi treats models as text-only when `input` is omitted in models.json (default `[\"text\"]`). Verified post-hoc from server logs: zero image payloads across all rtx6000 arms, so pi and Qwen Code arms are modality-matched. Kept deliberately going forward — the Kimi precedent has no record of image use either |
 
 ## Read (English)
 

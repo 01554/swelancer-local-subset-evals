@@ -20,6 +20,7 @@
 | agent | pi 0.84.1 (`@earendil-works/pi-coding-agent@0.84.1`), print mode (`-p`), one attempt per task |
 | agent config | custom provider via `~/.pi/agent/models.json` (`api: openai-completions`, host llama-server over LAN); `promptv1` phantom-python-neutralizing note appended to AGENT_PROMPT |
 | in-container quirks | task image ships node v20.15.1, too old for pi's undici — solver installs node 22 via the image's nvm before `npm install -g` |
+| modality | text-only (models.json `input` omitted → default `[\"text\"]`; see the qwen38-bf16 page for the post-hoc verification note) |
 
 ## Read (English)
 
