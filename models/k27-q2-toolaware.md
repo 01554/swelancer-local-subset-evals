@@ -2,7 +2,7 @@
 
 | | |
 |---|---|
-| checkpoint | Kimi-K2.7 2-bit GGUF (the project's original baseline) |
+| checkpoint | [unsloth/Kimi-K2.7-Code-GGUF](https://huggingface.co/unsloth/Kimi-K2.7-Code-GGUF) UD-Q2_K_XL (~341 GB) — the project's original baseline |
 | engine | llama.cpp (Metal), macstudio-512gb |
 | agent | **custom tool-aware solver, not a CLI** — this run predates the CLI harness (June 198-task run; disclosed in the original writeup) |
 | score | 3/24, $2,000 — **by construction, not a measurement** |

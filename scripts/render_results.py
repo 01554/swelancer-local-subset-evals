@@ -32,11 +32,13 @@ if os.path.exists("results/columns.csv"):
         meta[r["column"]] = r
 
 def disp(col):
-    """Linked short name for boards; raw ids stay in the CSVs and the
-    run-conditions table."""
+    """Linked short name for boards: one hop to the models/ commentary
+    page (which carries the HF link), falling back to the HF url, then to
+    the raw id. Raw ids stay in the CSVs and the run-conditions table."""
     m = meta.get(col, {})
-    if m.get("display") and m.get("url"):
-        return f"[{m['display']}]({m['url']})"
+    target = m.get("page") or m.get("url")
+    if m.get("display") and target:
+        return f"[{m['display']}]({target})"
     return col
 
 summary = []   # (env, col, passes, decided, money, timeouts)
