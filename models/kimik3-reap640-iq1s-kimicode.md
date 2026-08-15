@@ -4,8 +4,8 @@
 |---|---|
 | checkpoint | [Kimi-K3-REAP-512GB-GGUF](https://huggingface.co/hellohazime/Kimi-K3-REAP-512GB-GGUF) REAP640-IQ1_S (441 GB) — 640 of 896 experts kept per layer, en+code saliency; experts uniform 1.56 bpw |
 | engine | llama.cpp k3-stream (Metal), resident; decode ~3 tok/s |
-| score | 7/18, $35,750 (probe 3/3 · differential 2/5 · battle16 2/10, 6 tasks never ran) |
-| timeouts | ≥9 — all 9 audited battle16 fails were cap-terminated |
+| score | 7/18, $35,750 (sanity3 3/3 · hard5 2/5 · extended16 2/10, 6 tasks never ran) |
+| timeouts | ≥9 — all 9 audited extended16 fails were cap-terminated |
 
 ## Read (English)
 
@@ -19,9 +19,9 @@ huge; per-task it trails REAP576 clearly (5/8 vs 7/8 on the 8-task set).
 across arms is this project's recurring variance lesson — single attempts
 at temp 1.0 measure "solved this run", not "can solve".
 
-**Unfinished**: 6 battle16 tasks never ran (the machine moved on to the
+**Unfinished**: 6 extended16 tasks never ran (the machine moved on to the
 Qwen sprint), so its totals are not comparable to complete arms — which is
-why it sits in the unranked table. Every audited battle16 fail was a cap
+why it sits in the unranked table. Every audited extended16 fail was a cap
 kill at ~3 tok/s.
 
 ## 寸評(日本語)
@@ -35,6 +35,6 @@ kill at ~3 tok/s.
 このアームだけが通した問題。アーム間で勝ちが重ならないこのパターンが、
 temp 1.0 単発試行の分散という本プロジェクト繰り返しの教訓。
 
-**未完**: battle16 のうち6問は未走(マシンが Qwen スプリントに転用された
+**未完**: extended16 のうち6問は未走(マシンが Qwen スプリントに転用された
 ため)。だから完走アームとは合計を比べられず、順位なし表にいる。監査済み
-の battle16 負けは全部 cap 切れ。
+の extended16 負けは全部 cap 切れ。

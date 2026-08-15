@@ -5,8 +5,8 @@
 | checkpoint | [unsloth/Kimi-K3-GGUF](https://huggingface.co/unsloth/Kimi-K3-GGUF) UD-IQ2_XXS (711 GB) — nothing pruned |
 | engine | llama.cpp k3-stream `--moe-stream` (cache 380 GiB) on a 512 GiB machine; decode ~2 tok/s |
 | cap | 18000 s (1.5× the standard 10800 s, compensating the slower decode) |
-| score | 7/11, $35,750 (probe 3/3 · differential 2/5 · battle16 2/3; 13 battle16 tasks never ran) |
-| avg min/task | probe3 **185.0** — 9¼ hours for the three easiest tasks |
+| score | 7/11, $35,750 (sanity3 3/3 · hard5 2/5 · extended16 2/3; 13 extended16 tasks never ran) |
+| avg min/task | sanity3 **185.0** — 9¼ hours for the three easiest tasks |
 
 ## Read (English)
 
@@ -17,7 +17,7 @@ owner after 11 tasks because the wall-clock economics are absurd — a
 cap-terminated fail burns five hours for zero.
 
 **It still took 6883.** The $32,000 task fell here too (like REAP640, at
-the cap's edge), plus 43395_530 — so even three battle16 tasks were enough
+the cap's edge), plus 43395_530 — so even three extended16 tasks were enough
 to show the unpruned model competes when given time.
 
 **The trio saga lives here.** First attempt on 14294/15815_1/15925: 0/3 —

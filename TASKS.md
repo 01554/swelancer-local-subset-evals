@@ -5,13 +5,13 @@ Plain-language summaries of the 24 tasks used in this eval. **Full task text is 
 ## Common to all tasks
 
 - Every task is a real freelance job on a real OSS codebase (Expensify/App, a React Native expense app); prices are what was actually paid on Upwork
-- The prompt the grading harness builds is written for the paper's official scaffold (the [stock solver](https://github.com/openai/frontier-evals/blob/main/project/swelancer/swelancer/solvers/swelancer_agent/solver.py)): a loop where the harness executes \```python blocks found in the model's reply, and where writing `<user-tool>` makes a simulated user (Playwright) actually drive the app and hand back an interaction trace. **Matching the paper's conditions exactly requires using that solver.** Its drawback is that it is nowhere near how real coding agents work — every turn must be a self-contained Python script, with none of the file-editing/shell tooling of modern agents — so it is a poor probe of practical usability
+- The prompt the grading harness builds is written for the paper's official scaffold (the [stock solver](https://github.com/openai/frontier-evals/blob/main/project/swelancer/swelancer/solvers/swelancer_agent/solver.py)): a loop where the harness executes \```python blocks found in the model's reply, and where writing `<user-tool>` makes a simulated user (Playwright) actually drive the app and hand back an interaction trace. **Matching the paper's conditions exactly requires using that solver.** Its drawback is that it is nowhere near how real coding agents work — every turn must be a self-contained Python script, with none of the file-editing/shell tooling of modern agents — so it is a poor sanity3 of practical usability
 - This eval rolls out with CLI agents to measure practical usability instead. The cost: **the prompt's references to "\```python execution" and `<user-tool>` remain as descriptions of affordances that do not exist**
 - What `promptv1` really is: Gemma-4 follows the phantom "\```python is the ONLY way to send commands" instruction to the letter and, unless it is neutralized, **exits after a single code-block turn on every task** (reproduced 2/2). We therefore append one paragraph to AGENT_PROMPT stating that python blocks are not executed and tool calls are the only way to act. This patch **originates from a Gemma-4-specific quirk**, but is applied uniformly to all rtx6000 CLI arms for internal comparability (how other models behave without it is untested). The `<user-tool>` instruction is NOT neutralized, and failures caused by chasing it are counted as-is (e.g. Gemma-4 on 18827_741 / 4324)
 - **No task requires audio.** Image/video reliance varies per task, noted below
 - Grading runs the official e2e tests against the final repo state; visual design is only graded to the extent the tests check it
 
-## probe (does-it-still-work gate, 3 tasks)
+## sanity3 (does-it-still-work gate, 3 tasks)
 
 ### [28096_836](https://github.com/Expensify/App/issues/28096) — $500 / "Choose File" button capitalization
 - **Type**: UI copy fix (bug)
@@ -28,7 +28,7 @@ Plain-language summaries of the 24 tasks used in this eval. **Full task text is 
 - **Summary**: Searching euro/rupee works in the split-bill currency dropdown but returns "no results found" in the workspace default-currency section. Unify the search behavior
 - **Media**: screenshots/video (illustration); 10 written steps
 
-## differential (5 tasks K2.7 failed)
+## hard5 (5 tasks K2.7 failed)
 
 ### [14294](https://github.com/Expensify/App/issues/14294) — $4,000 / Google Docs paste turns bold, adds `*`
 - **Type**: rich-text handling bug
@@ -55,7 +55,7 @@ Plain-language summaries of the 24 tasks used in this eval. **Full task text is 
 - **Summary**: Copying multi-line text via the context-menu Copy icon and pasting into chat drops the line breaks. Fix the divergent copy paths
 - **Media**: 1 video (illustration); text-complete
 
-## battle16 (16 K2.7-failed tasks, shortest descriptions first)
+## extended16 (16 K2.7-failed tasks, shortest descriptions first)
 
 ### [29916_609](https://github.com/Expensify/App/issues/29916) — $500 / Move all selectors to the new format
 - **Type**: refactor feature. **Reference-dependent**

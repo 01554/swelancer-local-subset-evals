@@ -44,8 +44,8 @@ flags per build, the exact rollout caps we used (10800 s resident /
 18000 s streamed), one attempt per task, per-task CSVs under
 `replication_results/`.
 
-Task sets: `probe` (3), `differential` (5), `trio` (the 3 tasks at the center
-of the streamed-arm mystery), `battle16` (16), `all24` — **or any explicit
+Task sets: `sanity3` (3), `hard5` (5), `trio` (the 3 tasks at the center
+of the streamed-arm mystery), `extended16` (16), `all24` — **or any explicit
 SWE-Lancer IC-SWE Diamond task IDs**:
 
 ```bash
@@ -94,7 +94,7 @@ solver doesn't report usage) — ignore them.
 
 ## About the rollout cap (read before judging failures)
 
-In our battle16 runs, **8 of 10 failures were cap-terminated** — the agent was
+In our extended16 runs, **8 of 10 failures were cap-terminated** — the agent was
 still working when the 10800 s wall hit. So a `fail` row often means "did not
 finish in 3 h on a 3 tok/s machine", not "cannot solve".
 
@@ -104,7 +104,7 @@ valid) at double the cap, and report those as separate results labeled with
 the cap, e.g. `reap576_iq2xxs_21600s`. To do that with this kit:
 
 ```bash
-ROLLOUT_CAP=21600 scripts/replicate_k3_reap.sh reap576 battle16
+ROLLOUT_CAP=21600 scripts/replicate_k3_reap.sh reap576 extended16
 # delete only the cap-terminated .csv files from replication_results/ first,
 # so the resume feature re-runs exactly those
 ```

@@ -11,15 +11,15 @@ import os
 
 SYM = {"pass": "✅", "fail": "❌", "timeout": "⏱️", "running": "🔄", "not_run": "—", "": "·"}
 BEGIN, END = "<!-- RESULTS:BEGIN -->", "<!-- RESULTS:END -->"
-SETS = ("probe", "differential", "battle16")
+SETS = ("sanity3", "hard5", "extended16")
 
 out = [
     "_Auto-generated from [`results/*.csv`](results/) by `scripts/render_results.py` — edit those, not this section._",
     "",
     "✅ pass ❌ fail ⏱️ timeout (rollout cap hit, unfinished) 🔄 running — not run · in metadata rows, - = not recorded / unrecoverable (未取得), ≥N = N timeouts verified, rest unaudited",
     "",
-    "Task sets (details in [SELECTION.md](SELECTION.md)): **probe** = the 3 smallest-input tasks the K2.7 baseline solved (does-it-still-work gate) · "
-    "**differential** = the 5 smallest-input tasks K2.7 failed · **battle16** = 16 more K2.7-failed tasks, "
+    "Task sets (details in [SELECTION.md](SELECTION.md)): **sanity3** = the 3 smallest-input tasks the K2.7 baseline solved (does-it-still-work gate) · "
+    "**hard5** = the 5 smallest-input tasks K2.7 failed · **extended16** = 16 more K2.7-failed tasks, "
     "selected by shortest title+description",
     "",
     "_Per-task cells live in [`results/*.csv`](results/); tables below aggregate by set. "
@@ -83,14 +83,14 @@ if complete:
     lb_lines += [
         "### Overall — arms that ran all 24 tasks",
         "",
-        "| column | agent | environment | pass | earned | avg min/task (probe3 / all24) |",
+        "| column | agent | environment | pass | earned | avg min/task (sanity3 / all24) |",
         "|---|---|---|---:|---:|---:|",
     ]
     for env, col, p, n, m, t in sorted(complete, key=lambda s: (-s[4], -s[2])):
         mrow = meta.get(col, {})
         g = lambda k: mrow.get(k) or "-"
         lb_lines.append(
-            f"| {col} | {g('agent')} | {env} | {p}/{n} | ${m:,.0f} | {g('avg_min_probe3')} / {g('avg_min_all24')} |"
+            f"| {col} | {g('agent')} | {env} | {p}/{n} | ${m:,.0f} | {g('avg_min_sanity3')} / {g('avg_min_all24')} |"
         )
     lb_lines.append("")
 
@@ -118,7 +118,7 @@ if partial:
     lb_lines += [
         "### Incomplete runs — not ranked (cells: pass/decided of set size)",
         "",
-        "| column | environment | probe | differential | battle16 | earned so far |",
+        "| column | environment | sanity3 | hard5 | extended16 | earned so far |",
         "|---|---|---:|---:|---:|---:|",
     ]
     for env, col, p, n, m, t in sorted(partial, key=lambda s: (-s[4], -s[2])):
@@ -134,14 +134,14 @@ out += lb_lines + env_tables
 
 # per-run conditions table -> environments.md (same rows as the leaderboard)
 env_lines = [
-    "| column | agent | environment | ctx | sampling | avg min/task probe3 | avg min/task all24 |",
+    "| column | agent | environment | ctx | sampling | avg min/task sanity3 | avg min/task all24 |",
     "|---|---|---|---|---|---:|---:|",
 ]
 for env, col, p, n, m, t in sorted(summary, key=lambda s: (-s[4], -s[2])):
     mrow = meta.get(col, {})
     g = lambda k: mrow.get(k) or "-"
     env_lines.append(
-        f"| {col} | {g('agent')} | {env} | {g('ctx')} | {g('sampling')} | {g('avg_min_probe3')} | {g('avg_min_all24')} |"
+        f"| {col} | {g('agent')} | {env} | {g('ctx')} | {g('sampling')} | {g('avg_min_sanity3')} | {g('avg_min_all24')} |"
     )
 EBEGIN, EEND = "<!-- RUNCONDITIONS:BEGIN -->", "<!-- RUNCONDITIONS:END -->"
 envmd = open("environments.md").read()

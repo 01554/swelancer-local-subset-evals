@@ -5,13 +5,13 @@
 | checkpoint | [Qwen3.8-2.4T-A95B-REAP-256GB-GGUF](https://huggingface.co/hellohazime/Qwen3.8-2.4T-A95B-REAP-256GB-GGUF) (246 GB / 229 GiB) — 304 of 512 experts kept per layer by routing counts **and** 6 of 8 width superblocks per expert by activation energy; byte-copy of UD-IQ1_S, no requantization |
 | engine | llama.cpp (Metal), fully resident `-ngl 99`; decode ~10 tok/s — also loads on stock mainline |
 | agent | Qwen Code CLI 0.21.11 (pinned) |
-| score | 3/8, $2,000 (probe 3/3 · differential 0/5) |
+| score | 3/8, $2,000 (sanity3 3/3 · hard5 0/5) |
 | timeouts | 0 — every fail was a natural exit, well under the cap |
-| avg min/task | probe3 88.0 (vs 130.3 for its unpruned parent) |
+| avg min/task | sanity3 88.0 (vs 130.3 for its unpruned parent) |
 
 ## Read (English)
 
-**Probe sweep, differential wipeout — the KLD tail made flesh.** Held-out
+**sanity3 sweep, hard5 wipeout — the KLD tail made flesh.** Held-out
 KLD vs its parent said most tokens survive (code median 0.020, argmax
 86.6%) with damage concentrated in a heavy tail; the bench agrees:
 routine tasks all pass, all five K2.7-hard tasks fail, each by finishing
@@ -28,12 +28,12 @@ this table demands.
 
 **What it is for**: a 2.4T-parameter model doing real agentic work,
 resident, on a 256 GB-class machine, at ~1.9× its parent's streamed speed
-(88 vs 130 min on probe3) — and the first of our prunes that loads on
+(88 vs 130 min on sanity3) — and the first of our prunes that loads on
 unmodified mainline llama.cpp.
 
 ## 寸評(日本語)
 
-**probe 全勝・differential 全滅 — KLD テールの実体化。** 親モデルとの
+**sanity3 全勝・hard5 全滅 — KLD テールの実体化。** 親モデルとの
 held-out KLD は「大半のトークンは無傷(code 中央値 0.020、argmax 一致
 86.6%)、被害はテール集中」だったが、ベンチも同じ形になった: 定型は
 全部通り、K2.7 が落とした難問5問は全部落ちる。しかも全て時間切れでは
@@ -46,6 +46,6 @@ held-out KLD は「大半のトークンは無傷(code 中央値 0.020、argmax 
 ではない。この表が要求する次の実験が Q2 ベース keep-304(405GB)。
 
 **存在意義**: 2.4T パラメータのモデルが 256GB 級マシンに常駐して実務
-エージェントとして動く。親のストリーミング比 ~1.9倍速(probe3 88分 vs
+エージェントとして動く。親のストリーミング比 ~1.9倍速(sanity3 88分 vs
 130分)、かつ**うちの枝刈りで初めて素の mainline llama.cpp でロード
 できるビルド**。

@@ -8,7 +8,7 @@ with this table in hand.
 
 | environment | hardware | engine | typical decode | cap reached in practice? |
 |---|---|---|---|---|
-| macstudio-512gb | Mac Studio M3 Ultra, 512 GB unified | llama.cpp (Metal, k3-stream fork) | ~3 tok/s resident; streamed arm ~2/3 of that | often — source repo reports 8/10 reap576 battle16 fails were cap-terminated |
+| macstudio-512gb | Mac Studio M3 Ultra, 512 GB unified | llama.cpp (Metal, k3-stream fork) | ~3 tok/s resident; streamed arm ~2/3 of that | often — source repo reports 8/10 reap576 extended16 fails were cap-terminated |
 | rtx6000-96gb | RTX PRO 6000 Blackwell 96 GB, DDR4 host | llama.cpp server-cuda (Docker) | 26-64 tok/s (model-dependent) | never |
 
 ## Measured speeds (rtx6000-96gb)
@@ -44,7 +44,7 @@ therefore bound them only loosely (a capped 180 min rollout can show ~185-190
 min here, more when grading is heavy).
 
 <!-- RUNCONDITIONS:BEGIN -->
-| column | agent | environment | ctx | sampling | avg min/task probe3 | avg min/task all24 |
+| column | agent | environment | ctx | sampling | avg min/task sanity3 | avg min/task all24 |
 |---|---|---|---|---|---:|---:|
 | qwen38_27b_bf16_pi_promptv1 | pi | rtx6000-96gb | 131072 | temp 1.0 / top-p 0.95 | 15.0 | 43.8 |
 | kimik3_reap640_iq1s | Kimi Code CLI | macstudio-512gb | 131072 | temp 1.0 / top-p 0.95 | - | - |

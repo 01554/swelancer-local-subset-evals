@@ -13,20 +13,20 @@ _Auto-generated from [`results/*.csv`](results/) by `scripts/render_results.py` 
 
 ✅ pass ❌ fail ⏱️ timeout (rollout cap hit, unfinished) 🔄 running — not run · in metadata rows, - = not recorded / unrecoverable (未取得), ≥N = N timeouts verified, rest unaudited
 
-Task sets (details in [SELECTION.md](SELECTION.md)): **probe** = the 3 smallest-input tasks the K2.7 baseline solved (does-it-still-work gate) · **differential** = the 5 smallest-input tasks K2.7 failed · **battle16** = 16 more K2.7-failed tasks, selected by shortest title+description
+Task sets (details in [SELECTION.md](SELECTION.md)): **sanity3** = the 3 smallest-input tasks the K2.7 baseline solved (does-it-still-work gate) · **hard5** = the 5 smallest-input tasks K2.7 failed · **extended16** = 16 more K2.7-failed tasks, selected by shortest title+description
 
 _Per-task cells live in [`results/*.csv`](results/); tables below aggregate by set. Arms are only ranked against arms that ran the same work: incomplete runs are listed unranked with their coverage._
 
 ### Overall — arms that ran all 24 tasks
 
-| column | agent | environment | pass | earned | avg min/task (probe3 / all24) |
+| column | agent | environment | pass | earned | avg min/task (sanity3 / all24) |
 |---|---|---|---:|---:|---:|
 | qwen38_27b_bf16_pi_promptv1 | pi | rtx6000-96gb | 17/24 | $48,000 | 15.0 / 43.8 |
 | kimik3_reap576_iq2xxs | Kimi Code CLI | macstudio-512gb | 13/24 | $19,000 | - / - |
 | gemma4_31b_nvfp4_pi_promptv1 | pi | rtx6000-96gb | 7/24 | $9,250 | 4.3 / 6.2 |
 | k27_q2_2bit | custom tool-aware solver (pre-CLI) | macstudio-512gb | 3/24 | $2,000 | - / - |
 
-#### probe (3 tasks) — arms that finished the set
+#### sanity3 (3 tasks) — arms that finished the set
 
 | column | environment | pass | earned |
 |---|---|---:|---:|
@@ -39,7 +39,7 @@ _Per-task cells live in [`results/*.csv`](results/); tables below aggregate by s
 | qwen38_a95b_udiq1s_10800s | macstudio-512gb | 2/3 | $1,500 |
 | gemma4_31b_nvfp4_pi_promptv1 | rtx6000-96gb | 2/3 | $1,000 |
 
-#### differential (5 tasks) — arms that finished the set
+#### hard5 (5 tasks) — arms that finished the set
 
 | column | environment | pass | earned |
 |---|---|---:|---:|
@@ -51,7 +51,7 @@ _Per-task cells live in [`results/*.csv`](results/); tables below aggregate by s
 | k27_q2_2bit | macstudio-512gb | 0/5 | $0 |
 | qwen38_reap256_iq1s_10800s | macstudio-512gb | 0/5 | $0 |
 
-#### battle16 (16 tasks) — arms that finished the set
+#### extended16 (16 tasks) — arms that finished the set
 
 | column | environment | pass | earned |
 |---|---|---:|---:|
@@ -62,7 +62,7 @@ _Per-task cells live in [`results/*.csv`](results/); tables below aggregate by s
 
 ### Incomplete runs — not ranked (cells: pass/decided of set size)
 
-| column | environment | probe | differential | battle16 | earned so far |
+| column | environment | sanity3 | hard5 | extended16 | earned so far |
 |---|---|---:|---:|---:|---:|
 | kimik3_reap640_iq1s | macstudio-512gb | 3/3 of 3 | 2/5 of 5 | 2/10 of 16 | $35,750 |
 | kimik3_streamed896_iq2xxs_18000s | macstudio-512gb | 3/3 of 3 | 2/5 of 5 | 2/3 of 16 | $35,750 |
@@ -74,9 +74,9 @@ _Per-task cells live in [`results/*.csv`](results/); tables below aggregate by s
 
 | set | k27_q2_2bit | kimik3_reap640_iq1s | kimik3_reap576_iq2xxs | kimik3_streamed896_iq2xxs_18000s | kimik3_streamed896_iq2xxs_18000s_attempt2 | qwen38_a95b_udiq1s_10800s | qwen38_reap256_iq1s_10800s |
 |---|---|---|---|---|---|---|---|
-| probe (3) | 3/3 | 3/3 | 3/3 | 3/3 | — | 2/3 | 3/3 |
-| differential (5) | 0/5 | 2/5 | 4/5 | 2/5 | 3/3 | 4/4 | 0/5 |
-| battle16 (16) | 0/16 | 2/10 | 6/16 | 2/3 | — | — | — |
+| sanity3 (3) | 3/3 | 3/3 | 3/3 | 3/3 | — | 2/3 | 3/3 |
+| hard5 (5) | 0/5 | 2/5 | 4/5 | 2/5 | 3/3 | 4/4 | 0/5 |
+| extended16 (16) | 0/16 | 2/10 | 6/16 | 2/3 | — | — | — |
 | **total pass** | **3/24** | **7/18** | **13/24** | **7/11** | **3/3** | **6/7** | **3/8** |
 | **earned** | $2,000 | $35,750 | $19,000 | $35,750 | $10,000 | $11,000 | $2,000 |
 | **timeouts** | - | ≥8 | ≥8 | ≥1 | - | 0 | 0 |
@@ -85,9 +85,9 @@ _Per-task cells live in [`results/*.csv`](results/); tables below aggregate by s
 
 | set | gemma4_31b_nvfp4_pi_promptv1 | qwen38_27b_bf16_pi_promptv1 |
 |---|---|---|
-| probe (3) | 2/3 | 3/3 |
-| differential (5) | 3/5 | 3/5 |
-| battle16 (16) | 2/16 | 11/16 |
+| sanity3 (3) | 2/3 | 3/3 |
+| hard5 (5) | 3/5 | 3/5 |
+| extended16 (16) | 2/16 | 11/16 |
 | **total pass** | **7/24** | **17/24** |
 | **earned** | $9,250 | $48,000 |
 | **timeouts** | 0 | 0 |
@@ -107,4 +107,4 @@ Column naming: `<model>_<quant>_<agent/cli>_<condition labels>`; the rollout
 cap (10800 s unless suffixed) and any prompt deviation (e.g. `promptv1`) are
 part of the label. One attempt per task; never re-roll failures.
 
-Cell values: `pass` / `fail` (finished, graded incorrect) / `timeout` (rollout cap hit before the agent finished) / `running` / `not_run`. Older macstudio columns predate the fail-vs-timeout distinction; per the source repo, 8 of 10 reap576 battle16 fails were cap-terminated; those cells may be reclassified if per-task data is published.
+Cell values: `pass` / `fail` (finished, graded incorrect) / `timeout` (rollout cap hit before the agent finished) / `running` / `not_run`. Older macstudio columns predate the fail-vs-timeout distinction; per the source repo, 8 of 10 reap576 extended16 fails were cap-terminated; those cells may be reclassified if per-task data is published.

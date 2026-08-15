@@ -33,33 +33,33 @@ rtx6000 arms' live in [`results/columns.csv`](results/columns.csv) and
 
 ## Task sets
 
-Probe and differential were both selected by one metric: the **`input_tokens`
+sanity3 and hard5 were both selected by one metric: the **`input_tokens`
 column of the K2.7 baseline's full-run `results.csv`** — i.e., the input
 volume each task actually consumed in our
 [earlier 198-task K2.7 run](https://zenn.dev/hellohazime/articles/kimi_k27_code_swelancer_local),
 agent trajectory included. Sorting ascending and taking the head reproduces
 both selections exactly, order and all.
 
-**probe (3 tasks)** — the 3 smallest-input tasks among the 93 the K2.7
+**sanity3 (3 tasks)** — the 3 smallest-input tasks among the 93 the K2.7
 baseline solved; used as a does-it-still-work gate for every new build.
 
-**differential (5 tasks)** — the 5 smallest-input tasks among the 105 the
+**hard5 (5 tasks)** — the 5 smallest-input tasks among the 105 the
 K2.7 baseline failed (recorded inputs 16k–104k tokens).
 
-**battle16 (16 tasks)** — the 1.56 bpw × 640 vs 1.91 bpw × 576 head-to-head
+**extended16 (16 tasks)** — the 1.56 bpw × 640 vs 1.91 bpw × 576 head-to-head
 extension (576 complete; 640 stopped at 10 of 16). Selection is fully reproducible: from the same
 105 K2.7-failed tasks, sort ascending by `len(title) + len(description)`
 (from the benchmark's task table), drop the 5 already used by the
-differential set, take the first 16. Prize prices were not consulted during
+hard5 set, take the first 16. Prize prices were not consulted during
 selection (they range $250–$32,000, Σ$42,000). Note: this metric differs
-from the one used for probe/differential; both are fully specified here, so
+from the one used for sanity3/hard5; both are fully specified here, so
 every set is reproducible.
 
-Final per-build scores quoted on the model card = probe + differential
-(8 tasks); battle16 results will be added to `results.csv` per task as runs
+Final per-build scores quoted on the model card = sanity3 + hard5
+(8 tasks); extended16 results will be added to `results.csv` per task as runs
 complete, then rolled into 24-task totals.
 
-## Also tested on the differential trio (14294 / 15815_1 / 15925)
+## Also tested on the hard5 trio (14294 / 15815_1 / 15925)
 
 - Full 896-expert UD-IQ2_XXS streamed from SSD (llama.cpp MoE-streaming
   patch, ~2/3 decode speed): 0/3 — did not replicate on a second, separately
@@ -82,6 +82,6 @@ above: [Qwen3.8-2.4T-A95B-REAP-256GB-GGUF](https://huggingface.co/hellohazime/Qw
 (keep-304 of 512 experts × 6/8 width superblocks, 246 GB), served fully
 resident (`-ngl 99 -c 131072 --jinja`, temp 1.0 / top-p 0.95 / top-k 20,
 ~10 tok/s decode), same Qwen Code CLI (pinned 0.21.11), same 10800 s cap, one
-attempt per task. Complete: 3/8, $2,000 (probe 3/3, differential 0/5).
+attempt per task. Complete: 3/8, $2,000 (sanity3 3/3, hard5 0/5).
 All fails so far ended well under the cap (natural fails, not
 cap-terminated).

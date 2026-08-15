@@ -5,14 +5,14 @@
 | checkpoint | [CISCai/gemma-4-31B-it-NVFP4-turbo-GGUF](https://huggingface.co/CISCai/gemma-4-31B-it-NVFP4-turbo-GGUF) (19.3 GB) |
 | engine | llama.cpp server-cuda, native NVFP4 kernels on Blackwell |
 | decode | 63.9 tok/s |
-| score | 7/24, $9,250 (probe 2/3 · differential 3/5 · battle16 2/16) |
-| avg min/task | 4.3 (probe3) / 6.2 (all24) |
+| score | 7/24, $9,250 (sanity3 2/3 · hard5 3/5 · extended16 2/16) |
+| avg min/task | 4.3 (sanity3) / 6.2 (all24) |
 
 ## Read (English)
 
 **A fail-fast sprinter.** Task times sit in a flat 3–10 minute band regardless of
 difficulty — Gemma-4 never grinds. It converges on *a* fix quickly, states it
-confidently, and stops. On easy tasks this is efficiency; on battle16 it means
+confidently, and stops. On easy tasks this is efficiency; on extended16 it means
 under-exploration, and the 2/16 there is the price.
 
 **Instruction-following is its strength and its trap.** Without the `promptv1`
@@ -28,7 +28,7 @@ Passed 44618_1007, which k27 and reap576 both failed (reap640 later ran it too a
 
 ## 寸評(日本語)
 
-**即断即決のスプリンター。** 難易度に関係なく全タスク3〜10分のフラットな時間分布で、難問に粘るということをしない。簡単な問題では効率だが、battle16 では探索不足がそのまま 2/16 に出た。
+**即断即決のスプリンター。** 難易度に関係なく全タスク3〜10分のフラットな時間分布で、難問に粘るということをしない。簡単な問題では効率だが、extended16 では探索不足がそのまま 2/16 に出た。
 
 **指示追従の強さが長所であり罠。** promptv1 打消しなしでは幻の「```python で応答せよ」指示に忠実に従い全タスク1ターン死(観測したモデルで唯一、打消し必須)。幻の `<user-tool>` にも2回釣られ、実在しない人間テスターを律儀に待って $3,000 分を落とした。
 
