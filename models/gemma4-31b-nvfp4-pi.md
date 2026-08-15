@@ -24,7 +24,7 @@ waiting for a human tester that does not exist.
 
 **Notable**: its 14294 fix took a structurally different (and cruder) approach
 than the upstream Expensify fix — evidence of solving rather than recalling.
-Passed 44618_1007, which every Kimi build failed.
+Passed 44618_1007, which k27 and reap576 both failed (reap640 and the streamed-896 arm have not completed it, so "first" only among builds that ran it).
 
 ## 寸評(日本語)
 
@@ -32,4 +32,4 @@ Passed 44618_1007, which every Kimi build failed.
 
 **指示追従の強さが長所であり罠。** promptv1 打消しなしでは幻の「```python で応答せよ」指示に忠実に従い全タスク1ターン死(観測したモデルで唯一、打消し必須)。幻の `<user-tool>` にも2回釣られ、実在しない人間テスターを律儀に待って $3,000 分を落とした。
 
-**特記**: 14294 の修正は本家 Expensify の修正と構造的に異なる(より力技の)別解で、暗記でなくその場で解いた証拠。全 Kimi ビルドが落とした 44618_1007 を通した。
+**特記**: 14294 の修正は本家 Expensify の修正と構造的に異なる(より力技の)別解で、暗記でなくその場で解いた証拠。44618_1007 を通した(k27 と reap576 は fail。reap640 と streamed896 は未完走のため、「初」はあくまで実走済みビルドの中での話)。
