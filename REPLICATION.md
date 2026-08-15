@@ -44,6 +44,13 @@ flags per build, the exact rollout caps we used (10800 s resident /
 18000 s streamed), one attempt per task, per-task CSVs under
 `replication_results/`.
 
+**The caps are ours, not the benchmark's.** Neither the SWE-Lancer paper
+nor the official harness imposes a per-task wall-clock limit (upstream only
+caps a single code execution at 300 s). 10800 s is a line we drew so a
+~3 tok/s local machine finishes a run in days, not months — roughly 2× the
+1.6 h/task average of our original K2.7 full run. Treat it as a condition
+of the experiment, which is why it is part of every column label.
+
 Task sets: `sanity3` (3), `hard5` (5), `trio` (the 3 tasks at the center
 of the streamed-arm mystery), `extended16` (16), `all24` — **or any explicit
 SWE-Lancer IC-SWE Diamond task IDs**:

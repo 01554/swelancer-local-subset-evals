@@ -23,7 +23,9 @@ rtx6000 arms' live in [`results/columns.csv`](results/columns.csv) and
   `llama-server` (Unsloth llama.cpp fork, K3 branch).
 - Sampling: temperature 1.0, top-p 0.95; context 131,072; `--cache-reuse 0`.
 - Rollout cap: 10,800 s per task (the full-896 SSD-streamed check used
-  18,000 s to compensate for its slower decode).
+  18,000 s to compensate for its slower decode). **Our parameter, not the
+  paper's** — the official harness has no per-task wall-clock limit; see
+  REPLICATION.md.
 - **One attempt per task.** Genuine failures were never re-rolled. Two tasks
   (24508_791, 15815_1) hit a harness config error before the model was ever
   invoked; those were re-scheduled once and the re-run counts as the first
