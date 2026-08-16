@@ -52,6 +52,7 @@ _Per-task cells live in [`results/*.csv`](results/); tables below aggregate by s
 | [K3 REAP576 IQ2_XXS](models/kimik3-reap576-iq2xxs-kimicode.md) | macstudio-512gb | 4/5 | $11,000 | 134.5 |
 | [Qwen3.8-27B BF16](models/qwen38-27b-bf16-pi.md) | rtx6000-96gb | 3/5 | $9,000 | 48.0 |
 | [Gemma-4-31B NVFP4](models/gemma4-31b-nvfp4-pi.md) | rtx6000-96gb | 3/5 | $7,000 | 6.6 |
+| [Qwen3.8 REAP-512GB](models/qwen38-reap512-iq2xxs-qwencode.md) | macstudio-512gb | 2/5 | $6,000 | 97.8 |
 | [K3 REAP640 IQ1_S](models/kimik3-reap640-iq1s-kimicode.md) | macstudio-512gb | 2/5 | $1,500 | 167.3 |
 | [K3 full-896 streamed (cap 18000s)](models/kimik3-896-iq2xxs-streamed-kimicode.md) | macstudio-512gb | 2/5 | $1,500 | - |
 | [K2.7-Code Q2 (baseline)](models/k27-q2-toolaware.md) | macstudio-512gb | 0/5 | $0 | 27.7 |
@@ -75,8 +76,8 @@ _Per-task cells live in [`results/*.csv`](results/); tables below aggregate by s
 | [K3 full-896 streamed (cap 18000s)](models/kimik3-896-iq2xxs-streamed-kimicode.md) | macstudio-512gb | 3/3 of 3 | 2/5 of 5 | 2/3 of 16 | $35,750 |
 | [Qwen3.8-2.4T UD-IQ1_S streamed](models/qwen38-a95b-udiq1s-qwencode.md) | macstudio-512gb | 2/3 of 3 | 5/5 of 5 | — | $13,000 |
 | [K3 full-896 streamed, attempt 2](models/kimik3-896-iq2xxs-streamed-kimicode.md) | macstudio-512gb | — | 3/3 of 5 | — | $10,000 |
+| [Qwen3.8 REAP-512GB](models/qwen38-reap512-iq2xxs-qwencode.md) | macstudio-512gb | 3/3 of 3 | 2/5 of 5 | — | $8,000 |
 | [Qwen3.8 REAP-256GB](models/qwen38-reap256-iq1s-qwencode.md) | macstudio-512gb | 3/3 of 3 | 0/5 of 5 | — | $2,000 |
-| [Qwen3.8 REAP-512GB](models/qwen38-reap512-iq2xxs-qwencode.md) | macstudio-512gb | 3/3 of 3 | — | — | $2,000 |
 | [Qwen3.8 REAP-512GB (no counter-note)](models/qwen38-reap512-iq2xxs-qwencode.md) | macstudio-512gb | 1/3 of 3 | — | — | $500 |
 
 ## macstudio-512gb
@@ -84,11 +85,11 @@ _Per-task cells live in [`results/*.csv`](results/); tables below aggregate by s
 | set | k27_q2_2bit | kimik3_reap640_iq1s | kimik3_reap576_iq2xxs | kimik3_streamed896_iq2xxs_18000s | kimik3_streamed896_iq2xxs_18000s_attempt2 | qwen38_a95b_udiq1s_10800s | qwen38_reap256_iq1s_10800s | qwen38_reap512_iq2xxs_10800s | qwen38_reap512_iq2xxs_promptv1m_10800s |
 |---|---|---|---|---|---|---|---|---|---|
 | sanity3 (3) | 3/3 | 3/3 | 3/3 | 3/3 | — | 2/3 | 3/3 | 1/3 | 3/3 |
-| hard5 (5) | 0/5 | 2/5 | 4/5 | 2/5 | 3/3 | 5/5 | 0/5 | — | — |
+| hard5 (5) | 0/5 | 2/5 | 4/5 | 2/5 | 3/3 | 5/5 | 0/5 | — | 2/5 |
 | extended16 (16) | 0/16 | 2/10 | 6/16 | 2/3 | — | — | — | — | — |
-| **total pass** | **3/24** | **7/18** | **13/24** | **7/11** | **3/3** | **7/8** | **3/8** | **1/3** | **3/3** |
-| **earned** | $2,000 | $35,750 | $19,000 | $35,750 | $10,000 | $13,000 | $2,000 | $500 | $2,000 |
-| **timeouts** | - | 11 | 9 | ≥1 | - | 0 | 0 | 0 | 0 |
+| **total pass** | **3/24** | **7/18** | **13/24** | **7/11** | **3/3** | **7/8** | **3/8** | **1/3** | **5/8** |
+| **earned** | $2,000 | $35,750 | $19,000 | $35,750 | $10,000 | $13,000 | $2,000 | $500 | $8,000 |
+| **timeouts** | - | 11 | 9 | ≥1 | - | 0 | 0 | 0 | 1 |
 
 ## rtx6000-96gb
 

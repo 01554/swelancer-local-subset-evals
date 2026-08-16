@@ -5,9 +5,9 @@
 | checkpoint | [Qwen3.8-2.4T-A95B-REAP-512GB-GGUF](https://huggingface.co/hellohazime/Qwen3.8-2.4T-A95B-REAP-512GB-GGUF) (404 GB / 376 GiB) — 304 of 512 experts by routing counts, width untouched; byte-copy of the unpruned UD-IQ2_XXS, which at 656.6 GB cannot load on a 512 GiB machine at all |
 | engine | llama.cpp (Metal), fully resident `-ngl 99`; decode 9.3–9.5 tok/s — fork and stock mainline both verified |
 | KLD vs parent | en 0.110 / argmax 87.6% · code 0.196 / median **0.007** / argmax **90.0%** — the highest-fidelity prune in this project |
-| score | sanity3 only, two labeled conditions: **bare prompt 1/3** · **promptv1m 3/3, $2,000** |
-| timeouts | 0 in both conditions (bare-prompt fails were ~20-min one-turn exits) |
-| avg min/task | sanity3: 24.3 bare (fails fast) / 96.0 with the note (grinds and wins) |
+| score | promptv1m: **5/8, $8,000** (sanity3 3/3 · hard5 2/5) · bare-prompt control: sanity3 1/3 |
+| timeouts | 1 (15815_1 at 185 min); other fails natural (bare-prompt control: ~20-min one-turn exits) |
+| avg min/task | sanity3 96.0 · hard5 97.8 (bare-prompt control: 24.3, fails fast) |
 
 ## Run conditions
 
@@ -38,11 +38,14 @@ parent-style grind-passes: 18827_741 went from a 20-minute death to a
 74-minute $1,000 win; 29618_781 from 19 minutes to a 185-minute wire-to-wire
 $500. **3/3.**
 
-**Where it stands**: fidelity-wise the closest thing to the unpruned Q2
-that a 512 GiB machine can hold (which cannot hold the original at all),
-at 3× the K3 arms' decode speed. Per current protocol it gets no full
-bench — KLD + sanity3 is the gate, and both are now green under the
-standard condition.
+**Where it stands after hard5 (owner-requested extension)**: 2/5 —
+took 14294 ($4,000) and beat its parent's clock on the heaviest task
+(15925, ~104k-token issue: solved in 99 min where the streamed parent
+needed 183 cap-edge minutes), but dropped two tasks the parent grinds out
+and lost 15815_1 to the cap. Total 5/8 vs the parent's 7/8: the KLD ladder
+(parent > 512GB > 256GB) reproduces exactly as a bench ladder
+(7/8 > 5/8 > 3/8). Fidelity costs capability; resident speed buys some of
+it back.
 
 ## 寸評(日本語)
 
@@ -59,6 +62,9 @@ standard condition.
 だけで、同じセルが親と同じ粘り勝ちに変貌: 18827_741 は20分死→74分で
 $1,000、29618_781 は19分死→185分完走で $500。**3/3。**
 
-**立ち位置**: 512GiB 機に載る中では素の Q2(そもそも載らない)に最も近い
-忠実度で、K3 系の3倍の decode 速度。現行プロトコル通りフルベンチはせず、
-KLD + sanity3 がゲート — 標準条件で両方グリーン。
+**hard5 延長戦後の立ち位置**(オーナー指示の追加測定): 2/5 — 14294
+($4,000)を取り、最重量の 15925(issue 本文~104k トークン)は**親の半分の
+時間**(99分 vs 183分)で解いた。一方で親が粘り出す2問を落とし、15815_1
+は cap 切れ。総合 5/8 vs 親 7/8 — **KLD の梯子(親 > 512GB > 256GB)が
+そのままベンチの梯子(7/8 > 5/8 > 3/8)として再現**した。忠実度は能力に
+直結し、常駐速度がその一部を買い戻す。

@@ -2,11 +2,11 @@ task_id,set,price_usd,k27_q2_2bit,kimik3_reap640_iq1s,kimik3_reap576_iq2xxs,kimi
 28096_836,sanity3,500.0,pass,pass,pass,pass,,fail,pass,pass,pass
 18827_741,sanity3,1000.0,pass,pass,pass,pass,,pass,pass,fail,pass
 29618_781,sanity3,500.0,pass,pass,pass,pass,,pass,pass,fail,pass
-14294,hard5,4000.0,fail,timeout,pass,fail,pass,pass,fail,,
-24508_791,hard5,1000.0,fail,pass,pass,pass,,pass,fail,,
-15815_1,hard5,4000.0,fail,timeout,pass,fail,pass,pass,fail,,
-27353_776,hard5,500.0,fail,pass,timeout,pass,,pass,fail,,
-15925,hard5,2000.0,fail,timeout,pass,fail,pass,pass,fail,,
+14294,hard5,4000.0,fail,timeout,pass,fail,pass,pass,fail,,pass
+24508_791,hard5,1000.0,fail,pass,pass,pass,,pass,fail,,fail
+15815_1,hard5,4000.0,fail,timeout,pass,fail,pass,pass,fail,,timeout
+27353_776,hard5,500.0,fail,pass,timeout,pass,,pass,fail,,fail
+15925,hard5,2000.0,fail,timeout,pass,fail,pass,pass,fail,,pass
 29916_609,extended16,500.0,fail,timeout,timeout,timeout,,,,,
 6883,extended16,32000,fail,pass,fail,pass,,,,,
 43395_530,extended16,250.0,fail,timeout,pass,pass,,,,,
