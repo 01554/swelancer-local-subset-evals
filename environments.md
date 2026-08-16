@@ -17,6 +17,7 @@ with this table in hand.
 date,model,quant,size_gb,engine,ctx,prefill_tps,decode_tps,notes
 2026-08-14,Gemma-4-31B-IT,NVFP4 (CISCai turbo),19.3,llama.cpp server-cuda,131072,358,63.9,"prefill on short prompts; decode stable during eval"
 2026-08-15,Qwen3.8-27B,BF16 (unsloth),53.0,llama.cpp server-cuda,131072,285-1573,26-29,"29 fresh / 26 with long ctx during sweep; prefill 1573 with cache reuse"
+2026-08-16,Qwen3.8-27B,NVFP4 (unsloth compressed-tensors),22.6,vLLM 0.a (vllm-openai:latest),131072,,63,"single-stream incl. prefill; qwen3_coder tool parser + qwen3 reasoning parser"
 ```
 
 
@@ -48,6 +49,7 @@ sequential per-task `run.log` mtime diffs inside the group directory.
 <!-- RUNCONDITIONS:BEGIN -->
 | column | agent | environment | ctx | sampling | avg min/task sanity3 | avg min/task all24 |
 |---|---|---|---|---|---:|---:|
+| qwen38_27b_nvfp4_qwencode_promptv1 | Qwen Code CLI | rtx6000-96gb | 131072 | temp 1.0 / top-p 0.95 | 22.7 | 53.0 |
 | qwen38_27b_bf16_qwencode_promptv1 | Qwen Code CLI | rtx6000-96gb | 131072 | temp 1.0 / top-p 0.95 | 13.7 | 29.1 |
 | qwen38_27b_bf16_pi_promptv1 | pi | rtx6000-96gb | 131072 | temp 1.0 / top-p 0.95 | 15.0 | 43.8 |
 | kimik3_reap640_iq1s | Kimi Code CLI | macstudio-512gb | 131072 | temp 1.0 / top-p 0.95 | 67.7 | - |
