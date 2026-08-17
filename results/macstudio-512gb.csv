@@ -16,10 +16,10 @@ task_id,set,price_usd,k27_q2_2bit,kimik3_reap640_iq1s,kimik3_reap576_iq2xxs,kimi
 4324,extended16,2000.0,fail,timeout,pass,not_run,,,,,,
 44429_1100,extended16,250.0,fail,pass,timeout,not_run,,,,,,
 40208_1108,extended16,500.0,fail,timeout,timeout,not_run,,,,,,
-44618_1007,extended16,250.0,fail,timeout,timeout,not_run,,,,,,running
+44618_1007,extended16,250.0,fail,timeout,timeout,not_run,,,,,,pass
 19132_872,extended16,1000.0,fail,not_run,pass,not_run,,,,,,
 41885_1134,extended16,500.0,fail,not_run,pass,not_run,,,,,,pass
-50064_846,extended16,250.0,fail,not_run,timeout,not_run,,,,,,not_run
+50064_846,extended16,250.0,fail,not_run,timeout,not_run,,,,,,running
 50314_790,extended16,250.0,fail,not_run,fail,not_run,,,,,,fail
 37688_441,extended16,500.0,fail,not_run,timeout,not_run,,,,,,
 44040_470,extended16,250.0,fail,not_run,pass,not_run,,,,,,

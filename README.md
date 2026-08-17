@@ -82,8 +82,8 @@ _Per-task cells live in [`results/*.csv`](results/); tables below aggregate by s
 | [K3 full-896 streamed, attempt 2](models/kimik3-896-iq2xxs-streamed-kimicode.md) | macstudio-512gb | — | 3/3 of 5 | — | $10,000 |
 | [Qwen3.8 REAP-512GB](models/qwen38-reap512-iq2xxs-qwencode.md) | macstudio-512gb | 3/3 of 3 | 2/5 of 5 | — | $8,000 |
 | [Qwen3.8 REAP-256GB](models/qwen38-reap256-iq1s-qwencode.md) | macstudio-512gb | 3/3 of 3 | 0/5 of 5 | — | $2,000 |
+| [K3 full-896 streamed, UNCAPPED](models/kimik3-896-iq2xxs-streamed-kimicode.md) | macstudio-512gb | — | — | 2/3 of 16 | $750 |
 | [Qwen3.8 REAP-512GB (no counter-note)](models/qwen38-reap512-iq2xxs-qwencode.md) | macstudio-512gb | 1/3 of 3 | — | — | $500 |
-| [K3 full-896 streamed, UNCAPPED](models/kimik3-896-iq2xxs-streamed-kimicode.md) | macstudio-512gb | — | — | 1/2 of 16 | $500 |
 
 ## macstudio-512gb
 
@@ -91,9 +91,9 @@ _Per-task cells live in [`results/*.csv`](results/); tables below aggregate by s
 |---|---|---|---|---|---|---|---|---|---|---|
 | sanity3 (3) | 3/3 | 3/3 | 3/3 | 3/3 | — | 2/3 | 3/3 | 1/3 | 3/3 | — |
 | hard5 (5) | 0/5 | 2/5 | 4/5 | 2/5 | 3/3 | 5/5 | 0/5 | — | 2/5 | — |
-| extended16 (16) | 0/16 | 2/10 | 6/16 | 2/3 | — | — | — | — | — | 1/2 |
-| **total pass** | **3/24** | **7/18** | **13/24** | **7/11** | **3/3** | **7/8** | **3/8** | **1/3** | **5/8** | **1/2** |
-| **earned** | $2,000 | $35,750 | $19,000 | $35,750 | $10,000 | $13,000 | $2,000 | $500 | $8,000 | $500 |
+| extended16 (16) | 0/16 | 2/10 | 6/16 | 2/3 | — | — | — | — | — | 2/3 |
+| **total pass** | **3/24** | **7/18** | **13/24** | **7/11** | **3/3** | **7/8** | **3/8** | **1/3** | **5/8** | **2/3** |
+| **earned** | $2,000 | $35,750 | $19,000 | $35,750 | $10,000 | $13,000 | $2,000 | $500 | $8,000 | $750 |
 | **timeouts** | - | 11 | 9 | ≥1 | - | 0 | 0 | 0 | 1 | 0 |
 
 ## rtx6000-96gb
