@@ -62,8 +62,11 @@ Two findings, both load-bearing:
   practical clock, size loses to speed; the giant's edge only exists in a
   regime nobody deploys in.
 
-50314_790 is the one cell no build in this project has ever passed — a
-capability wall, not a clock wall.
+50314_790 was, at probe time, the one cell no build had passed — but the
+27B's NVFP4 arm has since solved it (and the other four) at normal speed,
+which reframes the whole probe: the giant needed 31 machine-hours to reach
+4/5 on tasks a 53 GB model clears in minutes. The probe's value is the
+mechanism it isolated (caps hide ability), not a claim of superiority.
 
 ## 寸評(日本語)
 
@@ -101,5 +104,8 @@ capability wall, not a clock wall.
   $53,750 を約12時間で稼ぐ。**実用的な時計の下では、規模は速度に負ける。**
   巨人の優位は、誰も運用しないレジームにしか存在しない。
 
-50314_790 は本プロジェクトのどのビルドも一度も通していない唯一のセル —
-時計の壁ではなく能力の壁。
+50314_790 はプローブ実施時点では全ビルド未踏のセルだったが、その後
+27B の NVFP4 腕が(残り4問と併せて)通常速度で解いた。これでプローブの
+位置づけも変わる: 巨人は31マシン時間かけて4/5、53GBのモデルは同じ5問を
+分単位で片付ける。このプローブの価値は「cap が能力を隠す」という機構を
+切り出したことであって、優劣の主張ではない。
