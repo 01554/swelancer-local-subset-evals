@@ -65,4 +65,5 @@ sequential per-task `run.log` mtime diffs inside the group directory.
 | qwen38_reap256_iq1s_10800s | Qwen Code CLI 0.21.11 | macstudio-512gb | 131072 | temp 1.0 / top-p 0.95 / top-k 20 | 88.0 | - |
 | kimik3_streamed896_iq2xxs_uncapped262k | Kimi Code CLI | macstudio-512gb | 262144 | temp 1.0 / top-p 0.95 | - | - |
 | qwen38_reap512_iq2xxs_10800s | Qwen Code CLI 0.21.11 | macstudio-512gb | 131072 | temp 1.0 / top-p 0.95 / top-k 20 | 24.3 | - |
+| kimik3_reap576_iq2xxs_uncapped262k | Kimi Code CLI | macstudio-512gb | 262144 | temp 1.0 / top-p 0.95 | - | - |
 <!-- RUNCONDITIONS:END -->
