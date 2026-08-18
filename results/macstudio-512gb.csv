@@ -7,7 +7,7 @@ task_id,set,price_usd,k27_q2_2bit,kimik3_reap640_iq1s,kimik3_reap576_iq2xxs,kimi
 15815_1,hard5,4000.0,fail,timeout,pass,fail,pass,pass,fail,,timeout,
 27353_776,hard5,500.0,fail,pass,timeout,pass,,pass,fail,,fail,
 15925,hard5,2000.0,fail,timeout,pass,fail,pass,pass,fail,,pass,
-29916_609,extended16,500.0,fail,timeout,timeout,timeout,,,,,,not_run
+29916_609,extended16,500.0,fail,timeout,timeout,timeout,,,,,,pass
 6883,extended16,32000,fail,pass,fail,pass,,,,,,
 43395_530,extended16,250.0,fail,timeout,pass,pass,,,,,,
 25901_945,extended16,2000.0,fail,timeout,pass,not_run,,,,,,
@@ -19,7 +19,7 @@ task_id,set,price_usd,k27_q2_2bit,kimik3_reap640_iq1s,kimik3_reap576_iq2xxs,kimi
 44618_1007,extended16,250.0,fail,timeout,timeout,not_run,,,,,,pass
 19132_872,extended16,1000.0,fail,not_run,pass,not_run,,,,,,
 41885_1134,extended16,500.0,fail,not_run,pass,not_run,,,,,,pass
-50064_846,extended16,250.0,fail,not_run,timeout,not_run,,,,,,running
+50064_846,extended16,250.0,fail,not_run,timeout,not_run,,,,,,pass
 50314_790,extended16,250.0,fail,not_run,fail,not_run,,,,,,fail
 37688_441,extended16,500.0,fail,not_run,timeout,not_run,,,,,,
 44040_470,extended16,250.0,fail,not_run,pass,not_run,,,,,,
