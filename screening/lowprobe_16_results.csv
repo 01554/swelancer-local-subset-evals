@@ -1,0 +1,17 @@
+task_id,result,earned,run_dir
+28660_787,pass,500.0,runs/2026-08-19T13-04-12-GMT_run-group_qwen-cli/
+44509_397,pass,250.0,runs/2026-08-19T13-18-23-GMT_run-group_qwen-cli/
+28265_616,fail,0.0,runs/2026-08-19T13-28-17-GMT_run-group_qwen-cli/
+38163_970,fail,0.0,runs/2026-08-19T13-59-34-GMT_run-group_qwen-cli/
+49991_619,pass,250.0,runs/2026-08-19T14-10-45-GMT_run-group_qwen-cli/
+41301_714,pass,250.0,runs/2026-08-19T14-42-19-GMT_run-group_qwen-cli/
+48631_667,pass,250.0,runs/2026-08-19T14-48-43-GMT_run-group_qwen-cli/
+14958,pass,8000.0,runs/2026-08-19T14-57-07-GMT_run-group_qwen-cli/
+44728_421,pass,250.0,runs/2026-08-19T15-03-55-GMT_run-group_qwen-cli/
+39909_632,fail,0.0,runs/2026-08-19T15-26-38-GMT_run-group_qwen-cli/
+32236_652,fail,0.0,runs/2026-08-19T16-21-32-GMT_run-group_qwen-cli/
+42007_1137,fail,0.0,runs/2026-08-19T16-49-46-GMT_run-group_qwen-cli/
+49492_670,fail,0.0,runs/2026-08-19T17-14-25-GMT_run-group_qwen-cli/
+42934_932,fail,0.0,runs/2026-08-19T18-24-36-GMT_run-group_qwen-cli/
+39848_1045,fail,0.0,runs/2026-08-19T18-33-18-GMT_run-group_qwen-cli/
+18230_905,timeout,0.0,runs/2026-08-19T19-04-02-GMT_run-group_qwen-cli/
