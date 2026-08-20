@@ -52,6 +52,7 @@ sequential per-task `run.log` mtime diffs inside the group directory.
 |---|---|---|---|---|---:|---:|
 | qwen38_27b_nvfp4_qwencode_promptv1 | Qwen Code CLI | rtx6000-96gb | 131072 | temp 1.0 / top-p 0.95 | 22.7 | 53.0 |
 | qwen38_27b_bf16_qwencode_promptv1 | Qwen Code CLI | rtx6000-96gb | 131072 | temp 1.0 / top-p 0.95 | 13.7 | 29.1 |
+| qwen38_27b_nvfp4_qwencode_temp06_mtp | Qwen Code CLI | rtx6000-96gb | 131072 | temp 0.6 / top-p 0.95 + MTP spec + prefix cache | 8.3 | 16.5 |
 | qwen38_27b_bf16_pi_promptv1 | pi | rtx6000-96gb | 131072 | temp 1.0 / top-p 0.95 | 15.0 | 43.8 |
 | kimik3_reap640_iq1s | Kimi Code CLI | macstudio-512gb | 131072 | temp 1.0 / top-p 0.95 | 67.7 | - |
 | kimik3_streamed896_iq2xxs_18000s | Kimi Code CLI | macstudio-512gb | 131072 | temp 1.0 / top-p 0.95 | 185.0 | - |
